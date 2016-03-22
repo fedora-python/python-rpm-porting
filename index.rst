@@ -9,7 +9,7 @@ Welcome to Python RPM Porting Guide
 
 This is a guide to for porting Fedora packages for Python 2 to Python 3.
 
-There are three disctinct types of Python packages, each with corresponding guide:
+There are three disctinct types of Python packages, each with its corresponding section of this guide:
 
 1. :doc:`Applications written in Python <applications>`
 ----------------------
@@ -24,26 +24,8 @@ If your package is being imported by third-party projects, but does not have any
 3. :doc:`Modules with their own executables <modules-with-executables>`
 -----------------------------------------------------------------------
 
-This section is useful in 2 cases:
+This section is useful in two cases:
 
 * If your package is being imported by third-party projects and also has an executable.
 * If your package needs to ship both Python 2 and Python 3 executable.
-
-..
-    Contents:
-
-    .. toctree::
-       :maxdepth: 2
-
-       applications
-       modules
-       modules-with-executables
-
-
-    Indices and tables
-    ==================
-
-    * :ref:`genindex`
-    * :ref:`modindex`
-    * :ref:`search`
 
