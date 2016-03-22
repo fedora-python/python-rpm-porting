@@ -14,7 +14,7 @@ There are three disctinct types of Python packages, each with corresponding guid
 1. :doc:`Applications written in Python <applications>`
 ----------------------
 
-If your package is not being imported by third-party projects (e.g. ``import some-module`` in python file), your package is most likely an application.
+If your package is not being imported by third-party projects (e.g. ``import some-module`` in a python file), your package is most likely an application.
 
 2. :doc:`Modules for Python <modules>`
 --------------------------------------
