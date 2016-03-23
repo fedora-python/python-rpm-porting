@@ -32,7 +32,7 @@ An python application which provides a convenient example.
 %doc README.rst
 %{python3_sitelib}/*
 %{_bindir}/sample-exec
-%{_bindir}/sample-exec-3.4
+%{_bindir}/sample-exec-3.?
 
 %changelog
 ...
