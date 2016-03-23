@@ -3,16 +3,16 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-===================================
-Welcome to Python RPM Porting Guide
-===================================
+=======================================
+Welcome to the Python RPM Porting Guide
+=======================================
 
-This is a guide to for porting Fedora packages for Python 2 to Python 3.
+This is a guide for porting Python 2 Fedora packages to Python 3.
 
 There are three disctinct types of Python packages, each with its corresponding section of this guide:
 
 1. :doc:`Applications written in Python <applications>`
-----------------------
+-------------------------------------------------------
 
 If your package is not being imported by third-party projects (e.g. ``import some-module`` in a python file), your package is most likely an application.
 
