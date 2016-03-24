@@ -43,16 +43,33 @@ An Python module which provides a convenient example.
 
 
 %install
-# We must do the Python 3 install first because the scripts in /usr/bin are
-# overwritten with every setup.py install, and in case of conflict
-# the Fedora Packaging Guidelines for Python specify that the default
-# executable should be the one for Python 2.
+# Here we have to think about the order, because the scripts in /usr/bin are
+# overwritten with every setup.py install.
+# If the script in /usr/bin provides the same functionality  regardles
+# of the Python version, we only provide Python 3 version and we need to run
+# the py3_install after py2_install.
+
+# If the user may need both versions, because the Python version is
+# important then the default executable should be the one for Python 2
+# and wee need to provide some symlinsk as well.
+# We are going to assume that case here, because it is a bit more complex.
+
 %py3_install
+
+# Now /usr/bin/sample-exec is Python 3, so we move it away
+mv %{buildroot}%{_bindir}/sample-exec %{buildroot}%{_bindir}/sample-exec-%{python3_version}
+
 %py2_install
 
+# Now /usr/bin/sample-exec is Python 2, and we move it away anyway
+mv %{buildroot}%{_bindir}/sample-exec %{buildroot}%{_bindir}/sample-exec-%{python2_version}
+
 # The guidelines also specify we provide symlinks with a '-X' suffix.
-ln -s %{_bindir}/sample-exec-%{python2_version} %{_bindir}/sample-exec-2
-ln -s %{_bindir}/sample-exec-%{python3_version} %{_bindir}/sample-exec-3
+ln -s ./sample-exec-%{python2_version} %{buildroot}%{_bindir}/sample-exec-2
+ln -s ./sample-exec-%{python3_version} %{buildroot}%{_bindir}/sample-exec-3
+
+# Finally, we provide /usr/bin/sample-exec as a link to /usr/bin/sample-exec-2
+ln -s ./sample-exec-2 %{buildroot}%{_bindir}/sample-exec
 
 
 %check
