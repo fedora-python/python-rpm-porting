@@ -1,5 +1,5 @@
 %global srcname example
-%global sum An example python module
+%global sum An example Python module
 
 Name:           python-%{srcname}
 Version:        1.2.3
@@ -14,7 +14,7 @@ BuildArch:      noarch
 BuildRequires:  python2-devel python3-devel
 
 %description
-An python module which provides a convenient example.
+An Python module which provides a convenient example.
 
 
 %package -n python2-%{srcname}
@@ -22,7 +22,7 @@ Summary:        %{sum}
 %{?python_provide:%python_provide python2-%{srcname}}
 
 %description -n python2-%{srcname}
-An python module which provides a convenient example.
+An Python module which provides a convenient example.
 
 
 %package -n python3-%{srcname}
@@ -30,7 +30,7 @@ Summary:        %{sum}
 %{?python_provide:%python_provide python3-%{srcname}}
 
 %description -n python3-%{srcname}
-An python module which provides a convenient example.
+An Python module which provides a convenient example.
 
 
 %prep
@@ -43,10 +43,10 @@ An python module which provides a convenient example.
 
 
 %install
-# We must do the python3 install first because the scripts in /usr/bin are
+# We must do the Python 3 install first because the scripts in /usr/bin are
 # overwritten with every setup.py install, and in case of conflict
 # the Fedora Packaging Guidelines for Python specify that the default
-# executable should be the one for python 2.
+# executable should be the one for Python 2.
 %py3_install
 %py2_install
 
@@ -60,8 +60,8 @@ ln -s %{_bindir}/sample-exec-%{python3_version} %{_bindir}/sample-exec-3
 %{__python3} setup.py test
 
 
-# Note that there is no %%files section for the unversioned python module
-# if we are building for several python runtimes
+# Note that there is no %%files section for the unversioned Python module
+# if we are building for several Python runtimes
 %files -n python2-%{srcname}
 %license COPYING
 %doc README.rst
