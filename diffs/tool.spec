@@ -51,7 +51,7 @@ An Python module which provides a convenient example.
 
 # If the user may need both versions, because the Python version is
 # important then the default executable should be the one for Python 2
-# and wee need to provide some symlinsk as well.
+# and wee need to provide some symlinks as well.
 # We are going to assume that case here, because it is a bit more complex.
 
 %py3_install
@@ -64,7 +64,7 @@ mv %{buildroot}%{_bindir}/sample-exec %{buildroot}%{_bindir}/sample-exec-%{pytho
 # Now /usr/bin/sample-exec is Python 2, and we move it away anyway
 mv %{buildroot}%{_bindir}/sample-exec %{buildroot}%{_bindir}/sample-exec-%{python2_version}
 
-# The guidelines also specify we provide symlinks with a '-X' suffix.
+# The guidelines also specify we must provide symlinks with a '-X' suffix.
 ln -s ./sample-exec-%{python2_version} %{buildroot}%{_bindir}/sample-exec-2
 ln -s ./sample-exec-%{python3_version} %{buildroot}%{_bindir}/sample-exec-3
 
