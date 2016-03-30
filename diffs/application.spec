@@ -13,7 +13,7 @@ BuildArch:      noarch
 BuildRequires:  python3-devel
 
 %description
-An python application which provides a convenient example.
+A Python application which provides a convenient example.
 
 %prep
 %autosetup -n %{srcname}-%{version}

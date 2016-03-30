@@ -14,7 +14,7 @@ BuildArch:      noarch
 BuildRequires:  python2-devel python3-devel
 
 %description
-An Python module which provides a convenient example.
+A Python module which provides a convenient example.
 
 
 %package -n python2-%{srcname}
@@ -22,7 +22,7 @@ Summary:        %{sum}
 %{?python_provide:%python_provide python2-%{srcname}}
 
 %description -n python2-%{srcname}
-An Python module which provides a convenient example.
+A Python module which provides a convenient example.
 
 
 %package -n python3-%{srcname}
@@ -30,7 +30,7 @@ Summary:        %{sum}
 %{?python_provide:%python_provide python3-%{srcname}}
 
 %description -n python3-%{srcname}
-An Python module which provides a convenient example.
+A Python module which provides a convenient example.
 
 
 %prep
@@ -45,13 +45,13 @@ An Python module which provides a convenient example.
 %install
 # Here we have to think about the order, because the scripts in /usr/bin are
 # overwritten with every setup.py install.
-# If the script in /usr/bin provides the same functionality  regardles
+# If the script in /usr/bin provides the same functionality regardless
 # of the Python version, we only provide Python 3 version and we need to run
 # the py3_install after py2_install.
 
-# If the user may need both versions, because the Python version is
-# important then the default executable should be the one for Python 2
-# and wee need to provide some symlinks as well.
+# If the user needs both versions, because the Python version is
+# important, then the default executable should be the one for Python 2
+# and we need to provide some symlinks as well.
 # We are going to assume that case here, because it is a bit more complex.
 
 %py3_install
