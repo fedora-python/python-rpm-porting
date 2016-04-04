@@ -1,5 +1,5 @@
-Applications written in Python
-==============================
+Porting applications written in Python
+======================================
 
 This section is for packages that are not being imported by third-party projects (e.g. ``import some_module`` in a Python file) and that do not interact with user code (such as plugins). Otherwise, look into :doc:`other sections <index>`.
 

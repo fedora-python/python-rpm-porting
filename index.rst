@@ -9,36 +9,53 @@ Welcome to the Python RPM Porting Guide
 
 This is a guide for porting Python 2 Fedora packages to Python 3.
 
-There are three disctinct types of Python packages, each with its corresponding section of this guide:
-
 
 Is your package ready to be ported?
+-----------------------------------
 
-* Is upstream ported to python 3?
-* Are the dependencies of your package ported to python 3 in fedora?
+First thing you need to figure out is if the software you're packaging is ready to be packaged for Python 3.
+
+Does upstream support Python 3?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Look  upstream and try to find out if the software is released with Python 3 support. First look at the front page of the project, Python compatibility is oftentimes listed there. If not, look at release notes or the changelog history. You can also look at issues and pull requests.
+
+However, the important thing to note is that the python 3 support needs to be *released*, not just committed in the version control system (git, mercurial,...).
+
+Are the dependencies of your package ported to Python 3 in Fedora/RHEL?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Before you start porting, it's imperative that you check if all dependencies of your package are also ported to Python 3 in Fedora or RHEL.
+
+You may encounter a situation where your software is Python 3 ready upstream, but it uses some dependencies that are packaged only for Python 2 in Fedora or RHEL. In that case try to communicate with the maintainer of the needed package and try to motivate and/or help them with porting of the package.
 
 
-1. :doc:`Applications written in Python <applications>`
--------------------------------------------------------
+What type of software are you packaging?
+----------------------------------------
+
+There are three distinct types of Python packages, each with different instructions for porting, so be mindful of which you chose:
+
+1. Applications written in Python
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If your package is not being imported by third-party projects (e.g. ``import some_module`` in a python file), your package is most likely an application.
 
-However, if your application has a plugin system or interacts with user code, look into :doc:`section 3 <modules-with-executables>`.
+However, if your application has a plugin system or interacts with user code, you should use the section for :doc:`Python tools <tools>`
 
-TODO move links here to the end of the explain text, because clicking on the headings isn't very obvious
+*See:* :doc:`Porting applications written in Python <applications>`
 
-2. :doc:`Modules for Python <modules>`
---------------------------------------
+2. Python modules
+^^^^^^^^^^^^^^^^^
 
 If your package is being imported by third-party projects, but does not have any executables, you're dealing with a standard Python module.
 
-3. :doc:`Modules with their own executables <modules-with-executables>`
------------------------------------------------------------------------
-TODO Python tools??
+*See:* :doc:`Porting Python modules <modules>`
 
-This section is useful in three cases:
+3. Python tools
+^^^^^^^^^^^^^^^
+This section is useful in the following cases:
 
 * If your application has a plugin system or in any way interacts with user code.
 * If your package is being imported by third-party projects and also has an executable.
 * If your package needs to ship both Python 2 and Python 3 executable.
 
+*See:* :doc:`Porting Python tools <tools>`
