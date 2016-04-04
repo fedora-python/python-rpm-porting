@@ -1,13 +1,20 @@
-.. Python RPM Porting documentation master file, created by
-   sphinx-quickstart on Tue Mar 22 13:14:36 2016.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. toctree::
+   :hidden:
+
+   self
+   applications
+   modules
+   tools
+
 
 =======================================
 Welcome to the Python RPM Porting Guide
 =======================================
 
-This is a guide for porting Python 2 Fedora packages to Python 3.
+This document aims to guide you through the process of porting your Python 2 Fedora package to Python 3.
+
+.. note::
+    This guide is in *outline* stage. The details are not yet fleshed out.
 
 
 Is your package ready to be ported?
@@ -22,7 +29,7 @@ Look  upstream and try to find out if the software is released with Python 3 sup
 However, the important thing to note is that the python 3 support needs to be *released*, not just committed in the version control system (git, mercurial,...).
 
 Are the dependencies of your package ported to Python 3 in Fedora/RHEL?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Before you start porting, it's imperative that you check if all dependencies of your package are also ported to Python 3 in Fedora or RHEL.
 
