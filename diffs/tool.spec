@@ -1,9 +1,9 @@
 %global srcname example
-%global sum An example Python module
+%global sum An example Python tool
 
 Name:           python-%{srcname}
 Version:        1.2.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        %{sum}
 
 License:        MIT
@@ -11,10 +11,11 @@ URL:            http://pypi.python.org/pypi/%{srcname}
 Source0:        http://pypi.python.org/packages/source/e/%{srcname}/%{srcname}-%{version}.tar.gz
 
 BuildArch:      noarch
-BuildRequires:  python2-devel python3-devel
+BuildRequires:  python-devel
+BuildRequires:  python3-devel
 
 %description
-A Python module which provides a convenient example.
+A Python tool which provides a convenient example.
 
 
 %package -n python2-%{srcname}
@@ -22,7 +23,7 @@ Summary:        %{sum}
 %{?python_provide:%python_provide python2-%{srcname}}
 
 %description -n python2-%{srcname}
-A Python module which provides a convenient example.
+A Python tool which provides a convenient example.
 
 
 %package -n python3-%{srcname}
@@ -30,7 +31,7 @@ Summary:        %{sum}
 %{?python_provide:%python_provide python3-%{srcname}}
 
 %description -n python3-%{srcname}
-A Python module which provides a convenient example.
+A Python tool which provides a convenient example.
 
 
 %prep
@@ -77,11 +78,11 @@ ln -s ./sample-exec-2 %{buildroot}%{_bindir}/sample-exec
 %{__python3} setup.py test
 
 
-# Note that there is no %%files section for the unversioned Python module
+# Note that there is no %%files section for the unversioned Python package
 # if we are building for several Python runtimes
 %files -n python2-%{srcname}
 %license COPYING
-%doc README.rst
+%doc README
 %{python2_sitelib}/*
 %{_bindir}/sample-exec
 %{_bindir}/sample-exec-2
@@ -89,9 +90,10 @@ ln -s ./sample-exec-2 %{buildroot}%{_bindir}/sample-exec
 
 %files -n python3-%{srcname}
 %license COPYING
-%doc README.rst
+%doc README
 %{python3_sitelib}/*
 %{_bindir}/sample-exec-3
 %{_bindir}/sample-exec-%{python3_version}
 
 %changelog
+...
