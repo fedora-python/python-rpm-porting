@@ -15,7 +15,7 @@ Applications behave the same when run under Python 2 and Python 3, therefore all
 
 So let's take an example spec file and port it to illustrate the process. We start with a spec file for an application that is being run with Python 2:
 
-.. literalinclude:: diffs/application.spec.orig
+.. literalinclude:: specs/application.spec.orig
    :language: spec
    :caption: Example spec file for an application running on Python 2.
 
@@ -73,8 +73,8 @@ Diff of the changes
 
 Here is a visualization of the changes to the spec file we have made according to the section :ref:`modifications`.
 
-.. literalinclude:: diffs/application.spec
-   :diff: diffs/application.spec.orig
+.. literalinclude:: specs/application.spec
+   :diff: specs/application.spec.orig
    :caption: Diff between the original example Python 2 spec file and the converted Python 3 spec file.
 
 
@@ -83,7 +83,7 @@ Ported RPM spec file
 
 Finally, here is a fully ported RPM spec file you can peruse at your own pleasure.
 
-.. literalinclude:: diffs/application.spec
+.. literalinclude:: specs/application.spec
    :language: spec
    :caption: Example RPM spec file converted to Python 3
 

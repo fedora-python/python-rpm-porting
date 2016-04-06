@@ -4,13 +4,13 @@ Porting Python tools
 Ported RPM spec file
 --------------------
 
-.. literalinclude:: diffs/tool.spec
+.. literalinclude:: specs/tool.spec
    :language: spec
 
 Diff of the changes
 -------------------
 
-.. literalinclude:: diffs/tool.spec
-   :diff: diffs/tool.spec.orig
+.. literalinclude:: specs/tool.spec
+   :diff: specs/tool.spec.orig
 
 
