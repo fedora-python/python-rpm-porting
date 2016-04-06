@@ -2,9 +2,9 @@
    :hidden:
 
    self
-   application
-   module
-   tool
+   applications
+   modules
+   tools
 
 
 =======================================
@@ -55,14 +55,14 @@ If your package is not being imported by third-party projects (e.g. ``import som
 
 However, if your application has a plugin system or interacts with user code, you should use the section for :doc:`Python tools <tools>`
 
-*See:* :doc:`Porting applications written in Python <application>`
+*See:* :doc:`Porting applications written in Python <applications>`
 
 2. Python modules
 ^^^^^^^^^^^^^^^^^
 
 If your package is being imported by third-party projects, but does not have any executables, you're dealing with a standard Python module.
 
-*See:* :doc:`Porting Python modules <module>`
+*See:* :doc:`Porting Python modules <modules>`
 
 3. Python tools
 ^^^^^^^^^^^^^^^
@@ -72,4 +72,4 @@ This section is useful in the following cases:
 * If your package is being imported by third-party projects and also has an executable.
 * If your package needs to ship both Python 2 and Python 3 executable.
 
-*See:* :doc:`Porting Python tools <tool>`
+*See:* :doc:`Porting Python tools <tools>`
