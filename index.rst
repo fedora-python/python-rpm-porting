@@ -2,9 +2,9 @@
    :hidden:
 
    self
-   applications
-   modules
-   tools
+   application
+   module
+   tool
 
 
 =======================================
@@ -41,6 +41,7 @@ Before you start porting, it's imperative that you check if all dependencies of 
 
 You may encounter a situation where your software is Python 3 ready upstream, but it uses some dependencies that are packaged only for Python 2 in Fedora or RHEL. In that case try to communicate with the maintainer of the needed package and try to motivate and/or help them with porting of the package.
 
+.. _chosing-type-section:
 
 What type of software are you packaging?
 ----------------------------------------
@@ -54,14 +55,14 @@ If your package is not being imported by third-party projects (e.g. ``import som
 
 However, if your application has a plugin system or interacts with user code, you should use the section for :doc:`Python tools <tools>`
 
-*See:* :doc:`Porting applications written in Python <applications>`
+*See:* :doc:`Porting applications written in Python <application>`
 
 2. Python modules
 ^^^^^^^^^^^^^^^^^
 
 If your package is being imported by third-party projects, but does not have any executables, you're dealing with a standard Python module.
 
-*See:* :doc:`Porting Python modules <modules>`
+*See:* :doc:`Porting Python modules <module>`
 
 3. Python tools
 ^^^^^^^^^^^^^^^
@@ -71,4 +72,4 @@ This section is useful in the following cases:
 * If your package is being imported by third-party projects and also has an executable.
 * If your package needs to ship both Python 2 and Python 3 executable.
 
-*See:* :doc:`Porting Python tools <tools>`
+*See:* :doc:`Porting Python tools <tool>`

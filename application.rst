@@ -3,7 +3,7 @@ Porting applications written in Python
 
 This section is for packages that are not being imported by third-party projects (e.g. ``import some_module`` in a Python file) and that do not interact with user code (such as plugins).
 
-If this is not the case for your software, look into :doc:`other sections <index>`.
+If this is not the case for your software, look into :ref:`other sections <chosing-type-section>`.
 
 
 Porting the specfile to Python 3
@@ -30,7 +30,7 @@ First it is recommended to update the software to the newest upstream version. I
 BuildRequires and Requires
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Change ``BuildRequires`` from ``python2-devel`` to ``python3-devel`` and adjust all other ``Requires`` and ``BuildRequires`` entries to point only to python3 packages.
+Change ``BuildRequires`` from ``python-devel`` to ``python3-devel`` and adjust all other ``Requires`` and ``BuildRequires`` entries to point only to python3 packages.
 
 **It is very important that you don't use any Python 2 dependencies as that would make your package depend both on Python version 2 and version 3, which would render your porting efforts useless.**
 
