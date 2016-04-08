@@ -20,6 +20,7 @@ A Python tool which provides a convenient example.
 
 %package -n python2-%{srcname}
 Summary:        %{sum}
+Requires:       python-some-module
 %{?python_provide:%python_provide python2-%{srcname}}
 
 %description -n python2-%{srcname}
@@ -28,6 +29,7 @@ A Python tool which provides a convenient example.
 
 %package -n python3-%{srcname}
 Summary:        %{sum}
+Requires:       python3-some-module
 %{?python_provide:%python_provide python3-%{srcname}}
 
 %description -n python3-%{srcname}

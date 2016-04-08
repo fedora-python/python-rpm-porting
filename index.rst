@@ -70,6 +70,6 @@ This section is useful in the following cases:
 
 * If your application has a plugin system or in any way interacts with user code.
 * If your package is being imported by third-party projects and also has an executable.
-* If your package needs to ship both Python 2 and Python 3 executable.
+* If your package needs to ship both Python 2 and Python 3 executables.
 
 *See:* :doc:`Porting Python tools <tools>`

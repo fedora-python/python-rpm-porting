@@ -24,7 +24,7 @@ So let's take an example spec file and port it to illustrate the process. We sta
 Modifications
 -------------
 
-First it is recommended to update the software to the newest upstream version. If it already is at the latest version, increment the release number.
+First it is recommended to update the software to the newest upstream version. If it already is at the latest version, increment the release number. Don't forget to add a ``%changelog`` entry as well.
 
 
 BuildRequires and Requires
