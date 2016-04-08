@@ -9,7 +9,7 @@ This section is for Python **packages with executables that in some-way or anoth
 
 If this is not the case for your software, look into :ref:`other sections <chosing-type-section>`.
 
-.. contents::
+.. contents:: Table of Contents
    :local:
 
 Porting the specfile to Python 3
