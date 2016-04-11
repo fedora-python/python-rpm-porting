@@ -12,6 +12,7 @@ Source0:        http://pypi.python.org/packages/source/e/%{srcname}/%{srcname}-%
 BuildArch:      noarch
 BuildRequires:  python-devel
 Requires: python-some-module
+Requires: python2-other-module
 
 %description
 A Python tool which provides a convenient example.

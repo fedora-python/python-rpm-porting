@@ -11,7 +11,7 @@ URL:            http://pypi.python.org/pypi/%{srcname}
 Source0:        http://pypi.python.org/packages/source/e/%{srcname}/%{srcname}-%{version}.tar.gz
 
 BuildArch:      noarch
-BuildRequires:  python-devel
+BuildRequires:  python2-devel
 BuildRequires:  python3-devel
 
 %description
@@ -21,6 +21,7 @@ A Python tool which provides a convenient example.
 %package -n python2-%{srcname}
 Summary:        %{sum}
 Requires:       python-some-module
+Requires:       python2-other-module
 %{?python_provide:%python_provide python2-%{srcname}}
 
 %description -n python2-%{srcname}
@@ -30,6 +31,7 @@ A Python tool which provides a convenient example.
 %package -n python3-%{srcname}
 Summary:        %{sum}
 Requires:       python3-some-module
+Requires:       python3-other-module
 %{?python_provide:%python_provide python3-%{srcname}}
 
 %description -n python3-%{srcname}
