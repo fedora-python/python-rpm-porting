@@ -21,11 +21,10 @@ When you want to package two different executables, the best practice (put forth
 
 .. _`Fedora Packaging Guidelines for Python`: https://fedoraproject.org/wiki/Packaging:Python#Common_SRPM_vs_split_SRPMs
 
-Let's take an example spec file and port it to illustrate the process. We start with a spec file for a Python tool packaged for Python version 2.
+Let's take an example spec file and port it to illustrate the process. We start with a spec file for a Python tool packaged for Python version 2:
 
 .. literalinclude:: specs/tool.spec.orig
    :language: spec
-   :caption: Example spec file of a Python tool packaged for Python 2.
 
 
 Modifications
@@ -37,7 +36,7 @@ First it is recommended to update the software you are packaging to its newest u
 Creating subpackages
 ^^^^^^^^^^^^^^^^^^^^
 
-Each subpackage you create will need to have it's own name, summary and description. If you haven't already, it is thus advised to declare some macros for your package at the top of the specfile:
+Each subpackage you create will need to have its own name, summary and description. If you haven't already, it is thus advised to declare macros for common values at the top of the specfile:
 
 .. code-block:: spec
 
@@ -116,7 +115,7 @@ Each subpackage also needs to contain its own description. However, unlike the `
 BuildRequires and Requires
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Now that you're building subpackages for both Python 2 and Python 3, you need to adjust the ``BuildRequires:`` by adding Python 3 versions of all the existing build dependencies. Starting with ``python-devel``: Use it's new version-specific name ``python2-devel`` and add it's Python 3 equivalent ``python3-devel``.
+Now that you're building subpackages for both Python 2 and Python 3, you need to adjust the ``BuildRequires:`` by adding Python 3 versions of all the existing build dependencies. Starting with ``python-devel``: Use its new version-specific name ``python2-devel`` and add it's Python 3 equivalent ``python3-devel``.
 
 As described :ref:`above <requires_subsection>`, ``Requires:`` tags are a bit more complicated. You should move the current set of ``Requires:`` underneath the definition of the Python 2 subpackage, and for the Python 3 subpackage, you need to find Python 3 alternatives for all the current Python 2 runtime requirements that are specified with the ``Requires:`` tags.
 
