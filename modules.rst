@@ -22,7 +22,6 @@ Let's take an example spec file and port it to illustrate the process. We start 
 
 .. literalinclude:: specs/module.spec.orig
    :language: spec
-   :caption: Example spec file of a Python module packaged for Python 2.
 
 
 .. include:: subsections/h2-modifications.rst

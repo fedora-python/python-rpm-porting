@@ -20,7 +20,6 @@ So let's take an example spec file and port it to illustrate the process. We sta
 
 .. literalinclude:: specs/application.spec.orig
    :language: spec
-   :caption: Example spec file for an application running on Python 2.
 
 
 .. include:: subsections/h2-modifications.rst
