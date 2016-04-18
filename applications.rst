@@ -5,13 +5,16 @@ This section is for packages that are not being imported by third-party projects
 
 If this is not the case for your software, look into :ref:`other sections <chosing-type-section>`.
 
+.. contents:: Table of Contents
+   :local:
+
 
 Porting the specfile to Python 3
 --------------------------------
 
 Applications behave the same when run under Python 2 and Python 3, therefore all you need to do is change the spec file to use Python 3 instead of Python 2.
 
-**In essense, porting of an application RPM mostly consists of going through the spec file and adding number 3 or substituting number 3 for number 2 where appropriate. Occasionally also substituting old macros for new ones that are more versatile.**
+In essence, porting of an application RPM mostly consists of going through the spec file and adding number 3 or substituting number 3 for number 2 where appropriate. Occasionally also substituting old macros for new ones that are more versatile.
 
 So let's take an example spec file and port it to illustrate the process. We start with a spec file for an application that is being run with Python 2:
 
@@ -19,12 +22,8 @@ So let's take an example spec file and port it to illustrate the process. We sta
    :language: spec
    :caption: Example spec file for an application running on Python 2.
 
-.. _modifications:
 
-Modifications
--------------
-
-First it is recommended to update the software to the newest upstream version. If it already is at the latest version, increment the release number. Don't forget to add a ``%changelog`` entry as well.
+.. include:: subsections/h2-modifications.rst
 
 
 BuildRequires and Requires
@@ -68,22 +67,16 @@ In the files section you can regularly find the following macros: ``%{python2_si
 
 The files section may also contain the versioned executable, usually ``%{_bindir}/sample-exec-2.7`` in which case it should be substituted by ``%{_bindir}/sample-exec-%{python3_version}``.
 
-Diff of the changes
--------------------
 
-Here is a visualization of the changes to the spec file we have made according to the section :ref:`modifications`.
+.. include:: subsections/h2-ported-specfile.rst
 
-.. literalinclude:: specs/application.spec
-   :diff: specs/application.spec.orig
-   :caption: Diff between the original example Python 2 spec file and the converted Python 3 spec file.
-
-
-Ported RPM spec file
---------------------
-
-Finally, here is a fully ported RPM spec file you can peruse at your own pleasure.
 
 .. literalinclude:: specs/application.spec
    :language: spec
-   :caption: Example RPM spec file converted to Python 3
 
+
+.. include:: subsections/h2-diff.rst
+
+
+.. literalinclude:: specs/application.spec
+   :diff: specs/application.spec.orig

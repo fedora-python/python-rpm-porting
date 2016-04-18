@@ -12,6 +12,7 @@ If this is not the case for your software, look into :ref:`other sections <chosi
 .. contents:: Table of Contents
    :local:
 
+
 Porting the specfile to Python 3
 --------------------------------
 
@@ -27,127 +28,17 @@ Let's take an example spec file and port it to illustrate the process. We start 
    :language: spec
 
 
-Modifications
--------------
+.. include:: subsections/h2-modifications.rst
 
-First it is recommended to update the software you are packaging to its newest upstream version. If it already is at the latest version, increment the release number. Don't forget to add a ``%changelog`` entry as well.
+.. include:: subsections/h3-subpackages.rst
 
+.. include:: subsections/h4-python_provide.rst
 
-Creating subpackages
-^^^^^^^^^^^^^^^^^^^^
+.. include:: subsections/h4-description.rst
 
-Each subpackage you create will need to have its own name, summary and description. If you haven't already, it is thus advised to declare macros for common values at the top of the specfile:
+.. include:: subsections/h3-build-requires.rst
 
-.. code-block:: spec
-
-    %global srcname example
-    %global sum An example Python tool
-
-Now we can use these to create the subpackages. The following should be placed beneath the ``%description`` section of the base package:
-
-.. code-block:: spec
-
-    %package -n python2-%{srcname}
-    Summary:  %{sum}
-    Requires: python-some-module
-    Requires: python2-other-module
-    %{?python_provide:%python_provide python2-%{srcname}}
-
-    %description -n python2-%{srcname}
-    A Python tool which provides a convenient example.
-
-
-    %package -n python3-%{srcname}
-    Summary:  %{sum}
-    Requires: python3-some-module
-    Requires: python3-other-module
-    %{?python_provide:%python_provide python3-%{srcname}}
-
-    %description -n python3-%{srcname}
-    A Python tool which provides a convenient example.
-
-First, using the ``%package`` macro you start defining a new *subpackage*, specifying its full name as ``python2-%{srcname}``, which in this case will become ``python2-example``. Next we provide the summary through the macro we defined earlier.
-
-.. _requires_subsection:
-
-``BuildRequires:`` tags from the original spec file will remain where they are—declared in the definition of the base package at the top of the spec file. However, the runtime requirements—the ones listed using the ``Requires:`` tag—will be different for the two subpackages, so they have to be moved here to the definition of each subpackage.
-
-While you can *cut and paste* all the ``Requires:`` tags directly from the base package to the ``python2-`` subpackage, remember that for the ``python3-`` subpackage you need to find Python 3 versions of each of the runtime dependencies.
-
-.. note::
-
-    You can see that the naming of Python 2 packages isn't uniform: some follow the current convention of using the ``python2-`` prefix, older ones use only the ``python-`` prefix, and the oldest might be without a prefix at all.
-
-    In many cases the Python 2 package can be found under both the ``python2-`` and ``python-`` prefixes, one of them being *virtually provided* by the ``Provides:`` tag. Whenever possible, use the version with the ``python2-`` prefix.
-
-%python_provide
-***************
-
-Now that we're splitting the package ``python-example`` into ``python2-example`` and ``python3-example``, we need to define what will happen when the user tries to install the unversioned name ``python-example``.
-
-At the time of this writing, the `packaging guidelines`_ say that the *default* version should be the one for Python 2. However, it is expected to change to Python 3 some time in the future. To avoid having to adjust all Python packages in Fedora when that time comes, the ``%python_provide`` macro was devised:
-
-.. _`packaging guidelines`: https://fedoraproject.org/wiki/Packaging:Python#Avoiding_collisions_between_the_python_2_and_python_3_stacks
-
-.. code-block:: spec
-
-    %{?python_provide:%python_provide python2-%{srcname}}
-    and
-    %{?python_provide:%python_provide python3-%{srcname}}
-
-This is a line you should include in each of your subpackages and it works thus: First the part ``?python_provide:`` checks whether the macro exists and if not, the entire line is ignored. After that we actually use the ``%python_provide`` macro and give it one argument—the name of the given subpackage.
-
-The macro will then check whether this Python version is default or not—if not, the line is again ignored. However, if indeed this is the currently default Python version, the macro is replaced with a *virtual provides* tag: ``Provides: python-%{srcname}``. This will tell the packaging system (dnf, yum, ...) to install this subpackage when user searches for ``python-example``.
-
-.. _description-subsection:
-
-%description
-************
-
-Each subpackage also needs to contain its own description. However, unlike the ``Summary:`` and ``Requires:`` tags, which are automatically applied to the subpackage declared above them, the ``%description`` macro needs to be told to which subpackage it belongs. You can do that by appending the same name as you did with the ``%package`` macro itself.
-
-.. code-block:: spec
-
-    %description -n python3-%{srcname}
-    A Python tool which provides a convenient example.
-
-
-BuildRequires and Requires
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Now that you're building subpackages for both Python 2 and Python 3, you need to adjust the ``BuildRequires:`` by adding Python 3 versions of all the existing build dependencies. Starting with ``python-devel``: Use its new version-specific name ``python2-devel`` and add it's Python 3 equivalent ``python3-devel``.
-
-As described :ref:`above <requires_subsection>`, ``Requires:`` tags are a bit more complicated. You should move the current set of ``Requires:`` underneath the definition of the Python 2 subpackage, and for the Python 3 subpackage, you need to find Python 3 alternatives for all the current Python 2 runtime requirements that are specified with the ``Requires:`` tags.
-
-
-.. _build-section:
-
-%build
-^^^^^^
-
-Currently your package is building the software for Python 2, what we need to do is also add building for Python 3. While we're modifying the spec file, however, it's a good idea to also update it to new standards—in this case a new macro.
-
-In the ideal case, you'll find the build done with either the ``%py2_build`` macro or its older version ``%py_build``, which you then should exchange for the former. In either case, you can just add the macro ``%py3_build`` afterwards, and this part is done.
-
-.. code-block:: spec
-
-    %build
-    %py2_build
-    %py3_build
-
-In many cases, however, you will find a custom build command prefixed by the ``%{__python}`` or ``%{__python2}`` macros, or in some cases just prefixed by the python interpreter invoked without a macro at all, e.g.::
-
-    %{__python} custombuild.py --many-flags
-        or
-    python custombuild.py --many-flags
-
-In these cases first try substituting the whole build command by the new pair of smart macros ``%py2_build`` and ``%py3_build``, which should in many cases correctly figure out what ought to be done automatically. Otherwise, duplicate the entire command and change the invocation of the python interpreter to the ``%{__python2}`` macro in one of them and to the ``%{__python3}`` in the other.
-
-.. code-block:: spec
-
-    %build
-    %{__python2} custombuild.py --many-flags
-    %{__python3} custombuild.py --many-flags
+.. include:: subsections/h3-build.rst
 
 
 %install
@@ -155,7 +46,7 @@ In these cases first try substituting the whole build command by the new pair of
 
 The ``%install`` section is perhaps the most crucial one, because we have to be very mindful of which executable goes where and what symlinks should be created.
 
-First, in the same manner as in the preceding :ref:`build-section` section, it is advisable to upgrade the current Python 2 install command to use the new ``%py2_install`` macro, however, if that doesn't work for you, you can stick to the current install command, just make sure it's invoked by the ``%{__python2}`` macro. The corresponding Python 3 install command will then either be the custom command prefixed by ``%{__python3}`` or the new ``%py3_install`` macro, which I'll be using in this example.
+First, in the same manner as in the preceding :ref:`build-section` section, it is advisable to upgrade the current Python 2 install command to use the new ``%py2_install`` macro, however, if that doesn't work for you, you can stick with the current install command, just make sure it's invoked by the ``%{__python2}`` macro. The corresponding Python 3 install command will then either be the custom command prefixed by ``%{__python3}`` or the new ``%py3_install`` macro, which I'll be using in this example.
 
 As the `packaging guidelines`_ specify, the Python 2 package is currently to be the default one, thus it is best if we first install the Python 3 version of our software and then the one for Python 2, because in case they are installing some files into the same directories (such as ``/usr/bin/``), one installation will overwrite the files of the other. So if we install the Python 2 version last, its files will be located in those shared directories.
 
@@ -191,16 +82,8 @@ What remains is to provide symlinks for the executables in the format ``executab
 Note that these symlinks use a relative path in relation to their location, i.e. they are pointing to a file that is at any given moment in the same directory as they are.
 
 
-%check
-^^^^^^
+.. include:: subsections/h3-check.rst
 
-Unlike in previous sections, there's no special macro for the ``%check`` section, and so here just make sure that the tests are invoked once using the ``%{__python2}`` macro and a second time using the ``%{__python3}`` macro.
-
-.. code-block:: spec
-
-    %check
-    %{__python2} setup.py test
-    %{__python3} setup.py test
 
 %files
 ^^^^^^
@@ -230,21 +113,16 @@ Accordingly we'll also add a ``%files`` section for the Python 3 subpackage. You
     %{_bindir}/sample-exec-3
     %{_bindir}/sample-exec-%{python3_version}
 
-Ported RPM spec file
---------------------
 
-Here you can peruse the entire ported spec file:
+.. include:: subsections/h2-ported-specfile.rst
+
 
 .. literalinclude:: specs/tool.spec
    :language: spec
 
 
-Diff of the changes
--------------------
+.. include:: subsections/h2-diff.rst
 
-And here you can see the diff of the original and the ported spec files to fully observe all the changes that were made:
 
 .. literalinclude:: specs/tool.spec
    :diff: specs/tool.spec.orig
-
-
