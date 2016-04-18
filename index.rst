@@ -23,6 +23,9 @@ This document aims to guide you through the process of porting your Python 2 Fed
 .. _web interface: https://lists.fedoraproject.org/archives/list/python-devel@lists.fedoraproject.org/
 .. _GitHub: https://github.com/torsava/python-rpm-porting
 
+.. contents:: Table of Contents
+   :local:
+
 
 Is your package ready to be ported?
 -----------------------------------
@@ -35,12 +38,13 @@ Look  upstream and try to find out if the software is released with Python 3 sup
 
 However, the important thing to note is that the python 3 support needs to be *released*, not just committed in the version control system (git, mercurial,...).
 
-Are the dependencies of your package ported to Python 3 in Fedora/RHEL?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Are the dependencies of your package ported to Python 3 for your distribution?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Before you start porting, it's imperative that you check if all dependencies of your package are also ported to Python 3 in Fedora or RHEL.
+Before you start porting, it's imperative that you check that all the dependencies of your package are also ported to Python 3 in the distribution you are packaging for (Fedora, CentOS, RHEL or any other RPM-based distribution).
 
-You may encounter a situation where your software is Python 3 ready upstream, but it uses some dependencies that are packaged only for Python 2 in Fedora or RHEL. In that case try to communicate with the maintainer of the needed package and try to motivate and/or help them with porting of the package.
+You may encounter a situation where your software is Python 3 ready upstream, but it uses some dependencies that are packaged only for Python 2 in your distribution. In that case try to communicate with the maintainer of the needed package and try to motivate and/or help them with porting of the package.
+
 
 .. _chosing-type-section:
 
