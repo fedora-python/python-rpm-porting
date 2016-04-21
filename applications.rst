@@ -40,13 +40,13 @@ Change ``BuildRequires`` from ``python-devel`` to ``python3-devel`` and adjust a
 
 In the build section you can find a variety of macros, for example ``%py_build`` and its newer version ``%py2_build``. You can freely substitute these by the new Python 3 macro ``%py3_build``.
 
-Occasionally you will find a custom build command prefixed by the ``%{__python}`` or ``%{__python2}`` macros, or in some cases just prefixed by the python interpreter invoked without a macro at all, e.g.::
+Occasionally you will find a custom build command prefixed by the ``%{__python}`` or ``%{__python2}`` macros, or in some cases just prefixed by the Python interpreter invoked without a macro at all, e.g.::
 
     %{__python} setup.py build
         or
     python setup.py build
 
-In these cases first try substituting the whole build command by the new smart macro ``%py3_build`` which should in many cases correctly figure out what ought to be done automatically. Otherwise change the invocation of the python interpreter to the ``%{__python3}`` macro.
+In these cases first try substituting the whole build command by the new smart macro ``%py3_build`` which should in many cases correctly figure out what ought to be done automatically. Otherwise change the invocation of the Python interpreter to the ``%{__python3}`` macro.
 
 
 %install and %check
@@ -54,7 +54,7 @@ In these cases first try substituting the whole build command by the new smart m
 
 The ``%install`` section will oftentimes contain the ``%py_install`` and ``%py2_install`` macros; you can replace these with the new Python 3 macro ``%py3_install``.
 
-Furthermore, as in the preceding :ref:`build-section` section, you will frequently find custom scripts or commands prefixed by either the ``%{__python}`` or ``%{__python2}`` macros or simply preceded by an invocation of the python interpreter without the use of macros at all.
+Furthermore, as in the preceding :ref:`build-section` section, you will frequently find custom scripts or commands prefixed by either the ``%{__python}`` or ``%{__python2}`` macros or simply preceded by an invocation of the Python interpreter without the use of macros at all.
 
 In the install section, try substituting it with the new ``%py3_install`` macro, which should figure out what to do automatically. If that doesn't work, or if you're porting the ``%check`` section, just make sure that any custom scripts or commands are invoked by the new ``%{__python3}`` macro.
 
