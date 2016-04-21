@@ -53,30 +53,34 @@ You may encounter a situation where your software is Python 3 ready upstream, bu
 What type of software are you packaging?
 ----------------------------------------
 
-There are three distinct types of Python packages, each with different instructions for porting, so be mindful of which you chose:
+There are four distinct types of Python packages, each with different instructions for porting, so be mindful of which you chose.
 
-1. Applications written in Python
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In rare cases your package might not nicely fall into either of these categories. In that case use the relevant parts from multiple sections or contact us on the mailing list.
 
-If your package is not being imported by third-party projects (e.g. ``import some_module`` in a Python file), your package is most likely an application.
+1. Applications that happen to be written in Python
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-However, if your application has a plugin system or interacts with user code, you should use the section for :doc:`Python tools <tools>`.
+.. include:: snippets/desc_applications.rst
 
-*See:* :doc:`Porting applications written in Python <applications>`
+*See:* :doc:`applications`
 
 2. Python modules
 ^^^^^^^^^^^^^^^^^
 
-If your package is being imported by third-party projects, but does not have any executables, you're dealing with a standard Python module.
+If your package is being imported by third-party projects, but does not have any executables, you're dealing with a Python module.
 
-*See:* :doc:`Porting Python modules <modules>`
+*See:* :doc:`modules`
 
-3. Python tools
-^^^^^^^^^^^^^^^
-This section is useful in the following cases:
+3. An application and a module in one package
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* If your application has a plugin system or in any way interacts with user code.
-* If your package is being imported by third-party projects and also has an executable.
-* If your package needs to ship both Python 2 and Python 3 executables.
+.. include:: snippets/desc_application-modules.rst
 
-*See:* :doc:`Porting Python tools <tools>`
+*See:* :doc:`application-modules`
+
+4. Tools for programming in Python
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. include:: snippets/desc_tools.rst
+
+*See:* :doc:`tools`

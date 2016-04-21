@@ -1,7 +1,7 @@
-Porting applications written in Python
-======================================
+Porting applications that happen to be written in Python
+========================================================
 
-This section is for packages that are not being imported by third-party projects (e.g. ``import some_module`` in a Python file) and that do not interact with user code (such as plugins).
+.. include:: snippets/desc_applications.rst
 
 If this is not the case for your software, look into :ref:`other sections <chosing-type-section>`.
 

@@ -1,11 +1,7 @@
-Porting Python tools
-====================
+Porting tools for programming in Python
+=======================================
 
-This section is for Python **packages with executables that in some-way or another interact with Python code**. For example:
-
-* If your application has a plugin system or in any way interacts with user code.
-* If your package is being imported by third-party projects and also has an executable.
-* If your package needs to ship both Python 2 and Python 3 executables.
+.. include:: snippets/desc_tools.rst
 
 If this is not the case for your software, look into :ref:`other sections <chosing-type-section>`.
 
