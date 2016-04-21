@@ -3,7 +3,7 @@
 Name:           python-%{srcname}
 Version:        1.2.3
 Release:        1%{?dist}
-Summary:        An example Python tool
+Summary:        An example Python module
 
 License:        MIT
 URL:            http://pypi.python.org/pypi/%{srcname}
@@ -15,7 +15,7 @@ Requires: python-some-module
 Requires: python2-other-module
 
 %description
-A Python tool which provides a convenient example.
+A Python module which provides a convenient example.
 
 
 %prep
@@ -38,7 +38,6 @@ A Python tool which provides a convenient example.
 %license COPYING
 %doc README
 %{python_sitelib}/*
-%{_bindir}/sample-exec
 
 
 %changelog

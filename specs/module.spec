@@ -1,5 +1,5 @@
 %global srcname example
-%global sum An example Python tool
+%global sum An example Python module
 
 Name:           python-%{srcname}
 Version:        1.2.3
@@ -15,7 +15,7 @@ BuildRequires:  python2-devel
 BuildRequires:  python3-devel
 
 %description
-A Python tool which provides a convenient example.
+A Python module which provides a convenient example.
 
 
 %package -n python2-%{srcname}
@@ -25,7 +25,7 @@ Requires:       python2-other-module
 %{?python_provide:%python_provide python2-%{srcname}}
 
 %description -n python2-%{srcname}
-A Python tool which provides a convenient example.
+A Python module which provides a convenient example.
 
 
 %package -n python3-%{srcname}
@@ -35,7 +35,7 @@ Requires:       python3-other-module
 %{?python_provide:%python_provide python3-%{srcname}}
 
 %description -n python3-%{srcname}
-A Python tool which provides a convenient example.
+A Python module which provides a convenient example.
 
 
 %prep
