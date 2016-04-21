@@ -3,10 +3,7 @@ Porting tools for programming in Python
 
 .. include:: snippets/desc_tools.rst
 
-If this is not the case for your software, look into :ref:`other sections <chosing-type-section>`.
-
-.. contents:: Table of Contents
-   :local:
+.. include:: snippets/section_header.rst
 
 
 Porting the specfile to Python 3

@@ -3,10 +3,7 @@ Porting Python modules
 
 This section is for Python **packages that do not have any executables**. Usually, these are normal Python modules that are being imported by third-party projects.
 
-If this is not the case for your software, look into :ref:`other sections <chosing-type-section>`.
-
-.. contents:: Table of Contents
-   :local:
+.. include:: snippets/section_header.rst
 
 
 Porting the specfile to Python 3
