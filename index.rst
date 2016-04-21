@@ -34,7 +34,7 @@ First thing you need to figure out is if the software you're packaging is ready 
 
 Does upstream support Python 3?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Look  upstream and try to find out if the software is released with Python 3 support. First look at the front page of the project, Python compatibility is oftentimes listed there. If not, look at release notes or the changelog history. You can also look at issues and pull requests.
+Look  upstream and try to find out if the software is released with Python 3 support. First look at the front page of the project, Python compatibility is oftentimes listed there. There is also a good chance the project will have this information listed on PyPI. If not, look at release notes or the changelog history. You can also look at issues and pull requests.
 
 However, the important thing to note is that the python 3 support needs to be *released*, not just committed in the version control system (git, mercurial,...).
 
