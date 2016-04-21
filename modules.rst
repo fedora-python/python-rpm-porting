@@ -33,22 +33,7 @@ Let's take an example spec file and port it to illustrate the process. We start 
 
 .. include:: subsections/h3-build.rst
 
-
-%install
-^^^^^^^^
-
-First, in the same manner as in the preceding :ref:`build-section` section, it is advisable to upgrade the current Python 2 install command to use the new ``%py2_install`` macro, however, if that doesn't work for you, you can stick with the current install command, just make sure it's invoked by the ``%{__python2}`` macro.
-
-After that, add the corresponding Python 3 install command, which will be either be the custom command prefixed by ``%{__python3}`` or the new ``%py3_install`` macro.
-
-.. code-block:: spec
-
-    %install
-    %py2_install
-    %py3_install
-
-.. include:: snippets/install_non-python-script.rst
-
+.. include:: subsections/h3-install.rst
 
 .. include:: subsections/h3-check.rst
 
@@ -56,7 +41,7 @@ After that, add the corresponding Python 3 install command, which will be either
 %files
 ^^^^^^
 
-The presence or absence of a ``%files`` section is the deciding factor in whether a given package or subpackage gets built or not. Therefore, to assure that our base package doesn't get built (as all the content has been moved to the two subpackages), make sure there is no ``%files`` section without a subpackage name.
+.. include:: snippets/files_preamble.rst
 
 You can reuse the current ``%files`` section for the Python 2 submodule by giving it the appropriate package name. You can keep it almost the same as before, just make sure that, where appropriate, it uses the new macros ``%{python2_sitelib}``, ``%{python2_sitearch}``, ``%{python2_version}`` or perhaps ``%{python2_version_nodots}``.
 
