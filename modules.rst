@@ -47,6 +47,8 @@ After that, add the corresponding Python 3 install command, which will be either
     %py2_install
     %py3_install
 
+.. include:: snippets/install_non-python-script.rst
+
 
 .. include:: subsections/h3-check.rst
 

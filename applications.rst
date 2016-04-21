@@ -44,6 +44,8 @@ Occasionally you will find a custom build command prefixed by the ``%{__python}`
 
 In these cases first try substituting the whole build command by the new smart macro ``%py3_build`` which should in many cases correctly figure out what ought to be done automatically. Otherwise change the invocation of the Python interpreter to the ``%{__python3}`` macro.
 
+In rare cases, you might encounter some non-Python build script such as a Makefile. In these instances you have to adjust the script on your own, consult the documentation for the specific build method.
+
 
 %install and %check
 ^^^^^^^^^^^^^^^^^^^
@@ -54,6 +56,7 @@ Furthermore, as in the preceding :ref:`build-section` section, you will frequent
 
 In the install section, try substituting it with the new ``%py3_install`` macro, which should figure out what to do automatically. If that doesn't work, or if you're porting the ``%check`` section, just make sure that any custom scripts or commands are invoked by the new ``%{__python3}`` macro.
 
+.. include:: snippets/install_non-python-script.rst
 
 %files
 ^^^^^^

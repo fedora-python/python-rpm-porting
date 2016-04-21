@@ -27,3 +27,4 @@ In these cases first try substituting the whole build command by the new pair of
     %{__python2} custombuild.py --many-flags
     %{__python3} custombuild.py --many-flags
 
+Rarely, you might encounter some non-Python build script such as a Makefile. In these instances you have to adjust the script on your own, consult the documentation for the specific build method.
