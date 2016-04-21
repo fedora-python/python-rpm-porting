@@ -58,7 +58,7 @@ There are three distinct types of Python packages, each with different instructi
 
 If your package is not being imported by third-party projects (e.g. ``import some_module`` in a Python file), your package is most likely an application.
 
-However, if your application has a plugin system or interacts with user code, you should use the section for :doc:`Python tools <tools>`
+However, if your application has a plugin system or interacts with user code, you should use the section for :doc:`Python tools <tools>`.
 
 *See:* :doc:`Porting applications written in Python <applications>`
 
