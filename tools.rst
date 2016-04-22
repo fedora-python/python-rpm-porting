@@ -1,9 +1,9 @@
 Porting tools for programming in Python
 =======================================
 
-.. include:: snippets/desc_tools.rst
+.. include:: snippets/desc_tools.inc
 
-.. include:: snippets/section_header.rst
+.. include:: snippets/section_header.inc
 
 
 Porting the specfile to Python 3
@@ -21,17 +21,17 @@ Let's take an example spec file and port it to illustrate the process. We start 
    :language: spec
 
 
-.. include:: subsections/h2-modifications.rst
+.. include:: subsections/h2-modifications.inc
 
-.. include:: subsections/h3-subpackages.rst
+.. include:: subsections/h3-subpackages.inc
 
-.. include:: subsections/h4-python_provide.rst
+.. include:: subsections/h4-python_provide.inc
 
-.. include:: subsections/h4-description.rst
+.. include:: subsections/h4-description.inc
 
-.. include:: subsections/h3-build-requires.rst
+.. include:: subsections/h3-build-requires.inc
 
-.. include:: subsections/h3-build.rst
+.. include:: subsections/h3-build.inc
 
 
 %install
@@ -41,7 +41,7 @@ The ``%install`` section is perhaps the most crucial one, because we have to be 
 
 First, in the same manner as in the preceding `build-section`_ section, it is advisable to upgrade the current Python 2 install command to use the new ``%py2_install`` macro, however, if that doesn't work for you, you can stick with the current install command, just make sure it's invoked by the ``%{__python2}`` macro. The corresponding Python 3 install command will then either be the custom command prefixed by ``%{__python3}`` or the new ``%py3_install`` macro, which I'll be using in this example.
 
-.. include:: snippets/install_non-python-script.rst
+.. include:: snippets/install_non-python-script.inc
 
 As the `packaging guidelines`_ specify, the Python 2 package is currently to be the default one, thus it is best if we first install the Python 3 version of our software and then the one for Python 2, because in case they are installing some files into the same directories (such as ``/usr/bin/``), one installation will overwrite the files of the other. So if we install the Python 2 version last, its files will be located in those shared directories.
 
@@ -77,13 +77,13 @@ What remains is to provide symlinks for the executables in the format ``executab
 Note that these symlinks use a relative path in relation to their location, i.e. they are pointing to a file that is at any given moment in the same directory as they are.
 
 
-.. include:: subsections/h3-check.rst
+.. include:: subsections/h3-check.inc
 
 
 %files
 ^^^^^^
 
-.. include:: snippets/files_preamble.rst
+.. include:: snippets/files_preamble.inc
 
 You can reuse the current ``%files`` section for the Python 2 submodule by giving it the appropriate package name. You can keep it almost the same as before, just make sure that, where appropriate, it uses the new macros ``%{python2_sitelib}``, ``%{python2_sitearch}``, ``%{python2_version}`` or perhaps ``%{python2_version_nodots}``. Finally, don't forget to add the two new locations of the executable we've made available through the symlinks.
 
@@ -109,14 +109,14 @@ Accordingly we'll also add a ``%files`` section for the Python 3 subpackage. You
     %{_bindir}/sample-exec-%{python3_version}
 
 
-.. include:: subsections/h2-ported-specfile.rst
+.. include:: subsections/h2-ported-specfile.inc
 
 
 .. literalinclude:: specs/tool.spec
    :language: spec
 
 
-.. include:: subsections/h2-diff.rst
+.. include:: subsections/h2-diff.inc
 
 
 .. literalinclude:: specs/tool.spec

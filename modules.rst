@@ -3,7 +3,7 @@ Porting Python modules
 
 This section is for Python **packages that do not have any executables**. Usually, these are normal Python modules that are being imported by third-party projects.
 
-.. include:: snippets/section_header.rst
+.. include:: snippets/section_header.inc
 
 
 Porting the specfile to Python 3
@@ -21,27 +21,27 @@ Let's take an example spec file and port it to illustrate the process. We start 
    :language: spec
 
 
-.. include:: subsections/h2-modifications.rst
+.. include:: subsections/h2-modifications.inc
 
-.. include:: subsections/h3-subpackages.rst
+.. include:: subsections/h3-subpackages.inc
 
-.. include:: subsections/h4-python_provide.rst
+.. include:: subsections/h4-python_provide.inc
 
-.. include:: subsections/h4-description.rst
+.. include:: subsections/h4-description.inc
 
-.. include:: subsections/h3-build-requires.rst
+.. include:: subsections/h3-build-requires.inc
 
-.. include:: subsections/h3-build.rst
+.. include:: subsections/h3-build.inc
 
-.. include:: subsections/h3-install.rst
+.. include:: subsections/h3-install.inc
 
-.. include:: subsections/h3-check.rst
+.. include:: subsections/h3-check.inc
 
 
 %files
 ^^^^^^
 
-.. include:: snippets/files_preamble.rst
+.. include:: snippets/files_preamble.inc
 
 You can reuse the current ``%files`` section for the Python 2 submodule by giving it the appropriate package name. You can keep it almost the same as before, just make sure that, where appropriate, it uses the new macros ``%{python2_sitelib}``, ``%{python2_sitearch}``, ``%{python2_version}`` or perhaps ``%{python2_version_nodots}``.
 
@@ -62,13 +62,13 @@ Accordingly we'll also add a ``%files`` section for the Python 3 subpackage. You
     %{python3_sitelib}/*
 
 
-.. include:: subsections/h2-ported-specfile.rst
+.. include:: subsections/h2-ported-specfile.inc
 
 
 .. literalinclude:: specs/module.spec
    :language: spec
 
-.. include:: subsections/h2-diff.rst
+.. include:: subsections/h2-diff.inc
 
 
 .. literalinclude:: specs/module.spec

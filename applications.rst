@@ -1,9 +1,9 @@
 Porting applications that happen to be written in Python
 ========================================================
 
-.. include:: snippets/desc_applications.rst
+.. include:: snippets/desc_applications.inc
 
-.. include:: snippets/section_header.rst
+.. include:: snippets/section_header.inc
 
 Porting the specfile to Python 3
 --------------------------------
@@ -18,7 +18,7 @@ So let's take an example spec file and port it to illustrate the process. We sta
    :language: spec
 
 
-.. include:: subsections/h2-modifications.rst
+.. include:: subsections/h2-modifications.inc
 
 
 BuildRequires and Requires
@@ -56,7 +56,7 @@ Furthermore, as in the preceding `build-section`_ section, you will frequently f
 
 In the install section, try substituting it with the new ``%py3_install`` macro, which should figure out what to do automatically. If that doesn't work, or if you're porting the ``%check`` section, just make sure that any custom scripts or commands are invoked by the new ``%{__python3}`` macro.
 
-.. include:: snippets/install_non-python-script.rst
+.. include:: snippets/install_non-python-script.inc
 
 %files
 ^^^^^^
@@ -66,14 +66,14 @@ In the files section you can regularly find the following macros: ``%{python2_si
 The files section may also contain the versioned executable, usually ``%{_bindir}/sample-exec-2.7`` in which case it should be substituted by ``%{_bindir}/sample-exec-%{python3_version}``.
 
 
-.. include:: subsections/h2-ported-specfile.rst
+.. include:: subsections/h2-ported-specfile.inc
 
 
 .. literalinclude:: specs/application.spec
    :language: spec
 
 
-.. include:: subsections/h2-diff.rst
+.. include:: subsections/h2-diff.inc
 
 
 .. literalinclude:: specs/application.spec

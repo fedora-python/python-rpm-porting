@@ -61,7 +61,7 @@ In rare cases your package might not nicely fall into either of these categories
 1. Applications that happen to be written in Python
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. include:: snippets/desc_applications.rst
+.. include:: snippets/desc_applications.inc
 
 *See:* :doc:`applications`
 
@@ -75,13 +75,13 @@ If your package is being imported by third-party projects, but does not have any
 3. An application and a module in one package
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. include:: snippets/desc_application-modules.rst
+.. include:: snippets/desc_application-modules.inc
 
 *See:* :doc:`application-modules`
 
 4. Tools for programming in Python
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. include:: snippets/desc_tools.rst
+.. include:: snippets/desc_tools.inc
 
 *See:* :doc:`tools`
