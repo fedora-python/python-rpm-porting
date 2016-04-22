@@ -4,6 +4,7 @@
    self
    applications
    modules
+   application-modules
    tools
 
 
