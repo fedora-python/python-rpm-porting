@@ -45,7 +45,7 @@ Let's take an example spec file and port it to illustrate the process. We start 
 %files
 ^^^^^^
 
-.. include:: snippets/files_python2_subpackage.rst
+.. include:: snippets/files_preamble.rst
 
 You can reuse the current ``%files`` section for the Python 2 submodule by giving it the appropriate package name. You can keep it almost the same as before, just make sure that, where appropriate, it uses the new macros ``%{python2_sitelib}``, ``%{python2_sitearch}``, ``%{python2_version}`` or perhaps ``%{python2_version_nodots}``.
 
