@@ -1,0 +1,12 @@
+Copyright
+
+(c) Red Hat, Inc.
+(c) Tomas Orsava and other contributors [0]
+
+Python RPM Porting Guide is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. [1]
+
+To the extent possible under law, Red Hat, Inc., has waived all copyright and related or neighboring rights to the example spec files included in this work. [2]
+
+[0] https://github.com/torsava/python-rpm-porting/graphs/contributors
+[1] http://creativecommons.org/licenses/by-sa/4.0/
+[2] http://creativecommons.org/publicdomain/zero/1.0/
