@@ -79,7 +79,7 @@ Congratulations, you have now successfully ported your package to be available f
 
 The best practice when depending on executables is to depend on them explicitly, i.e. use ``Requires: /usr/bin/sample-exec``. That way no matter to which package the executable moves, your dependency gets loaded fine. However, many (if not most) packages are written with dependencies on the package itself (``Requires: python-example``) in which case they will now be depending on the ``python2-example`` subpackage, because it has the currently active ``%python_provide`` macro (see `%python_provide`_). However, the executable has moved to the ``python3-example`` subpackage, and thus the dependency has been broken.
 
-First see what (if any) packages depend on this one:
+First, see what (if any) packages depend on this package itself:
 
 .. code-block:: bash
 
