@@ -21,7 +21,7 @@ If the command for Python 2 can be invoked explicitly for Python 2, e.g. as ``py
 
     or
 
-    nosetests
+    nosetests-%{python2_version}
     nosetests-%{python3_version}
 
 .. include:: /snippets/check_custom_command.inc
