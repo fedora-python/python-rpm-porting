@@ -1,5 +1,3 @@
-:orphan:
-
 .. _description-subsection:
 
 %description
