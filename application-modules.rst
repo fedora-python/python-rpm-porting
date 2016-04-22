@@ -72,6 +72,26 @@ We'll also add a ``%files`` section for the Python 3 subpackage. You can copy th
     %{_bindir}/sample-exec
 
 
+Have you broken third-party packages?
+-------------------------------------
+
+Congratulations, you have now successfully ported your package to be available for both Python 2 and Python 3! However, in doing so, many of the third-party packages that depend on the application bundled in this package may have just been broken.
+
+The best practice when depending on executables is to depend on them explicitly, i.e. use ``Requires: /usr/bin/sample-exec``. That way no matter to which package the executable moves, your dependency gets loaded fine. However, many (if not most) packages are written with dependencies on the package itself (``Requires: python-example``) in which case they will now be depending on the ``python2-example`` subpackage, because it has the currently active ``%python_provide`` macro (see `%python_provide`_). However, the executable has moved to the ``python3-example`` subpackage, and thus the dependency has been broken.
+
+First see what (if any) packages depend on this one:
+
+.. code-block:: bash
+
+   dnf repoquery --whatrequires python-example
+
+Now you ought go through the packages one by one, look into their Requires tags, and if they depend on your package itself (and not just the executable), you should try to figure out if they need to depend on the application from your package, or on the Python module, or possibly, both.
+
+If you do think they want to depend on your application, and therefore the dependency may have just been broken, you are advised to open a BugZilla report and request that they change (or add) the dependency to the executable itself (``Requires: /usr/bin/sample-exec``). If you can provide a patch as well, your requests will be all the faster resolved.
+
+If you are unsure whether the package needs to depend on your application, open a BugZilla report for the package and ask the maintainer(s) to answer the question themselves.
+
+
 .. include:: subsections/h2-ported-specfile.rst
 
 
