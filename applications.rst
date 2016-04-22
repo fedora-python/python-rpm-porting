@@ -58,6 +58,18 @@ In the install section, try substituting it with the new ``%py3_install`` macro,
 
 .. include:: snippets/install_non-python-script.inc
 
+Lastly, in the ``%check`` section you can also encounter a custom Python command that runs the tests, such as ``nosetests`` or ``py.test``. In that case find out what is the name of the executable for Python 3 and use it instead of the Python 2 version.
+
+.. code-block:: spec
+
+    %check
+    py.test-3
+    or
+    nosetests-%{python3_version}
+
+.. include:: /snippets/check_custom_command.inc
+
+
 %files
 ^^^^^^
 

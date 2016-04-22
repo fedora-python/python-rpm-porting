@@ -81,9 +81,9 @@ The best practice when depending on executables is to depend on them explicitly,
 
 First, see what (if any) packages depend on this package itself:
 
-.. code-block:: bash
+.. code-block:: console
 
-   dnf repoquery --whatrequires python-example
+   $ dnf repoquery --whatrequires python-example
 
 Now you ought to go through these packages one by one and try to figure out if they need to depend on the application from your package, or on the Python module, or possibly, both.
 
