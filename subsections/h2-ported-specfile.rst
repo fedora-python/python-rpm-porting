@@ -1,3 +1,5 @@
+:orphan:
+
 Ported RPM spec file
 --------------------
 

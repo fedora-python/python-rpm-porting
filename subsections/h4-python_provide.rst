@@ -1,3 +1,5 @@
+:orphan:
+
 %python_provide
 ***************
 
