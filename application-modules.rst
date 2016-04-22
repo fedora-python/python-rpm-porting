@@ -17,7 +17,7 @@ For these reasons, the `Fedora Packaging Guidelines for Python`_ advise to **spl
 
 .. _`Fedora Packaging Guidelines for Python`: https://fedoraproject.org/wiki/Packaging:Python#Common_SRPM_vs_split_SRPMs
 
-In contrast to the Python module, however, the bundled application does not interact with Python code, and is therefore Python version agnostic. For that reason, we need only to package it once, i.e. only in one of the subpackages.
+In contrast to the Python module, however, the bundled application does not interact with Python code, and is therefore Python version agnostic. For that reason, we need only to include it in one of the subpackages, not both. And when the version does not matter, the guidelines compel us to install the version for Python 3, therefore we will include it in the Python 3 subpackage.
 
 Let's take an example spec file and port it to illustrate the process. We start with a spec file for a Python tool packaged for Python version 2:
 
@@ -33,7 +33,10 @@ Let's take an example spec file and port it to illustrate the process. We start 
 
 .. include:: subsections/h4-description.rst
 
+
 .. include:: subsections/h3-build-requires.rst
+
+As we will be including the executable (application) only in the Python 3 subpackage, you may be also able to get rid of some runtime dependencies (listed using the ``Requires:`` tags) in the Python 2 subpackage that were previously used only by the executable and are therefore no longer needed in that subpackage. However, figuring out what runtime dependencies are no longer needed is a problematic task, therefore if you are unsure of which dependencies can be omitted, you can skip this task.
 
 .. include:: subsections/h3-build.rst
 
