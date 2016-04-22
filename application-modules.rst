@@ -85,7 +85,7 @@ First see what (if any) packages depend on this one:
 
    dnf repoquery --whatrequires python-example
 
-Now you ought go through the packages one by one, look into their Requires tags, and if they depend on your package itself (and not just the executable), you should try to figure out if they need to depend on the application from your package, or on the Python module, or possibly, both.
+Now you ought to go through these packages one by one and try to figure out if they need to depend on the application from your package, or on the Python module, or possibly, both.
 
 If you do think they want to depend on your application, and therefore the dependency may have just been broken, you are advised to open a BugZilla report and request that they change (or add) the dependency to the executable itself (``Requires: /usr/bin/sample-exec``). If you can provide a patch as well, your requests will be all the faster resolved.
 
