@@ -22,7 +22,7 @@ This document aims to guide you through the process of porting your Python 2 Fed
 
 .. _python-devel mailing list: https://lists.fedoraproject.org/admin/lists/python-devel.lists.fedoraproject.org/
 .. _web interface: https://lists.fedoraproject.org/archives/list/python-devel@lists.fedoraproject.org/
-.. _GitHub: https://github.com/torsava/python-rpm-porting
+.. _GitHub: https://github.com/fedora-python/python-rpm-porting
 
 .. contents:: Table of Contents
    :local:
