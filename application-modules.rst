@@ -38,6 +38,8 @@ Let's take an example spec file and port it to illustrate the process. We start 
 
 As we will be including the executable (application) only in the Python 3 subpackage, you may be also able to get rid of some runtime dependencies (listed using the ``Requires:`` tags) in the Python 2 subpackage that were previously used only by the executable and are therefore no longer needed in that subpackage. However, figuring out what runtime dependencies are no longer needed is a problematic task, therefore if you are unsure of which dependencies can be omitted, you can skip this task.
 
+.. include:: subsections/h3-prep.inc
+
 .. include:: subsections/h3-build.inc
 
 .. include:: subsections/h3-install.inc

@@ -29,6 +29,9 @@ Change ``BuildRequires`` from ``python-devel`` to ``python3-devel`` and adjust a
 **It is very important that you don't use any Python 2 dependencies as that would make your package depend both on Python version 2 and version 3, which would render your porting efforts useless.**
 
 
+.. include:: subsections/h3-prep.inc
+
+
 .. _build-section:
 
 %build
