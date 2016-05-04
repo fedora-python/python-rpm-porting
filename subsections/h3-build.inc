@@ -1,5 +1,3 @@
-.. _build-section:
-
 %build
 ^^^^^^
 

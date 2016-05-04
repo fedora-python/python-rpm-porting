@@ -29,8 +29,6 @@ Change ``BuildRequires`` from ``python-devel`` to ``python3-devel`` and adjust a
 **It is very important that you don't use any Python 2 dependencies as that would make your package depend both on Python version 2 and version 3, which would render your porting efforts useless.**
 
 
-.. _build-section:
-
 %build
 ^^^^^^
 
@@ -52,7 +50,7 @@ In rare cases, you might encounter some non-Python build script such as a Makefi
 
 The ``%install`` section will oftentimes contain the ``%py_install`` and ``%py2_install`` macros; you can replace these with the new Python 3 macro ``%py3_install``.
 
-Furthermore, as in the preceding `build-section`_ section, you will frequently find custom scripts or commands prefixed by either the ``%{__python}`` or ``%{__python2}`` macros or simply preceded by an invocation of the Python interpreter without the use of macros at all.
+Furthermore, as in the preceding `%build`_ section, you will frequently find custom scripts or commands prefixed by either the ``%{__python}`` or ``%{__python2}`` macros or simply preceded by an invocation of the Python interpreter without the use of macros at all.
 
 In the install section, try substituting it with the new ``%py3_install`` macro, which should figure out what to do automatically. If that doesn't work, or if you're porting the ``%check`` section, just make sure that any custom scripts or commands are invoked by the new ``%{__python3}`` macro.
 

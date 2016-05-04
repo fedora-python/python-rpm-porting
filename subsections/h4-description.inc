@@ -1,5 +1,3 @@
-.. _description-subsection:
-
 %description
 ************
 

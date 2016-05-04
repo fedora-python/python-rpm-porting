@@ -39,7 +39,7 @@ Let's take an example spec file and port it to illustrate the process. We start 
 
 The ``%install`` section is perhaps the most crucial one, because we have to be very mindful of which executable goes where and what symlinks should be created.
 
-First, in the same manner as in the preceding `build-section`_ section, it is advisable to upgrade the current Python 2 install command to use the new ``%py2_install`` macro, however, if that doesn't work for you, you can stick with the current install command, just make sure it's invoked by the ``%{__python2}`` macro. The corresponding Python 3 install command will then either be the custom command prefixed by ``%{__python3}`` or the new ``%py3_install`` macro, which I'll be using in this example.
+First, in the same manner as in the preceding `%build`_ section, it is advisable to upgrade the current Python 2 install command to use the new ``%py2_install`` macro, however, if that doesn't work for you, you can stick with the current install command, just make sure it's invoked by the ``%{__python2}`` macro. The corresponding Python 3 install command will then either be the custom command prefixed by ``%{__python3}`` or the new ``%py3_install`` macro, which I'll be using in this example.
 
 .. include:: snippets/install_non-python-script.inc
 

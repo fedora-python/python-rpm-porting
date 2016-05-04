@@ -1,5 +1,3 @@
-.. _modifications:
-
 Modifications
 -------------
 
