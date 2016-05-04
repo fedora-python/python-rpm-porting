@@ -29,6 +29,9 @@ Change ``BuildRequires`` from ``python-devel`` to ``python3-devel`` and adjust a
 **It is very important that you don't use any Python 2 dependencies as that would make your package depend both on Python version 2 and version 3, which would render your porting efforts useless.**
 
 
+.. include:: subsections/h3-prep.inc
+
+
 %build
 ^^^^^^
 
@@ -74,6 +77,9 @@ Lastly, in the ``%check`` section you can also encounter a custom Python command
 In the files section you can regularly find the following macros: ``%{python2_sitelib}``, ``%{python2_sitearch}``, ``%{python2_version}``, ``%{python2_version_nodots}`` or their unversioned alternatives. Substitute these with their counterparts for Python 3, e.g. ``%{python3_sitelib}``.
 
 The files section may also contain the versioned executable, usually ``%{_bindir}/sample-exec-2.7`` in which case it should be substituted by ``%{_bindir}/sample-exec-%{python3_version}``.
+
+
+.. include:: subsections/h3-shebangs.inc
 
 
 .. include:: subsections/h2-ported-specfile.inc
