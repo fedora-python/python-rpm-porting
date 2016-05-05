@@ -31,7 +31,7 @@ First find out what shebangs are used in your package by unpacking the sources f
 
 You will usually find one of these two shebangs:
 
-.. code-block:: bash
+.. code-block:: text
 
    #!/usr/bin/python
    #!/usr/bin/env python
