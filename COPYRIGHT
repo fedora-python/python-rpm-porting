@@ -1,7 +1,10 @@
 Copyright
 
 (c) 2016 Red Hat, Inc.
-(c) 2016 Tomas Orsava and other contributors [0]
+(c) 2016 Tomas Orsava
+(c) 2016 Miro Hroncok
+(c) 2016 Petr Viktorin
+(c) 2016 Other contributors [0]
 
 Python RPM Porting Guide is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. [1]
 
