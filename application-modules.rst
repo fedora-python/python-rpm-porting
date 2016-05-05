@@ -72,6 +72,9 @@ We'll also add a ``%files`` section for the Python 3 subpackage. You can copy th
     %{_bindir}/sample-exec
 
 
+.. include:: subsections/h3-shebangs.inc
+
+
 Have you broken third-party packages?
 -------------------------------------
 

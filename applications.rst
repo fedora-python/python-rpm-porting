@@ -76,6 +76,9 @@ In the files section you can regularly find the following macros: ``%{python2_si
 The files section may also contain the versioned executable, usually ``%{_bindir}/sample-exec-2.7`` in which case it should be substituted by ``%{_bindir}/sample-exec-%{python3_version}``.
 
 
+.. include:: subsections/h3-shebangs.inc
+
+
 .. include:: subsections/h2-ported-specfile.inc
 
 
