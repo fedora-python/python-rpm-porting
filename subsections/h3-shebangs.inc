@@ -9,11 +9,10 @@ As the porting of the spec file is nearly finished, build it and then run the fo
 
 .. code-block:: console
 
-   $ # You can run this in mock as both rpm and grep are already installed.
    $ rpm -qp --requires path/to/an.rpm | grep -E '/usr/bin/(python|env)'
 
 
-This will list all the Python executables your RPM package depends on as well as the ``/usr/bin/env`` executable which usually invokes ``python``. The use of ``env`` is dangerous: applications should be using the safe system version of Python and not trust whatever version ``env`` might try to substitute. **If you find that an RPM package for Python 3 depends on Python 2 or** ``/usr/bin/env``, **you need to fix it**.
+This will list all the Python executables your RPM package depends on as well as the ``/usr/bin/env`` executable which usually invokes ``python``. The use of ``env`` is dangerous: applications should be using the safe system version of Python and not trust whatever version ``env`` might try to substitute. **If you find that an RPM package for Python 3 depends on Python 2 or** ``/usr/bin/env`` **you need to fix it**.
 
 
 Fixing shebangs
