@@ -10,9 +10,10 @@ As the porting of the spec file is nearly finished, build it and then run the fo
 .. code-block:: console
 
    $ # You can run this in mock as both rpm and grep are already installed.
-   $ rpm -qp --requires path/to/an.rpm | grep -E '/usr/bin/(python|env python)'
+   $ rpm -qp --requires path/to/an.rpm | grep -E '/usr/bin/(python|env)'
 
-This will list all the Python executables your RPM package depends on. If you find that an RPM package for Python 3 depends on Python 2 (either as ``/usr/bin/python`` or ``/usr/bin/env python``) you need to fix it.
+
+This will list all the Python executables your RPM package depends on as well as the ``/usr/bin/env`` executable which usually invokes ``python``. The use of ``env`` is dangerous: applications should be using the safe system version of Python and not trust whatever version ``env`` might try to substitute. **If you find that an RPM package for Python 3 depends on Python 2 or** ``/usr/bin/env``, **you need to fix it**.
 
 
 Fixing shebangs
@@ -28,25 +29,27 @@ First find out what shebangs are used in your package by unpacking the sources f
    $ # Searches only Python shebangs
    $ grep -rE '^#!/usr/bin/(python|env python)' .
 
-You will usually find one of these two shebangs::
+You will usually find one of these two shebangs:
+
+.. code-block:: bash
 
    #!/usr/bin/python
    #!/usr/bin/env python
 
 It is advisable to change both of these to ``#!/usr/bin/python3``. ``/usr/bin/env`` can be useful for scripts, but applications should link to the system version of Python outright.
 
-To change the shebangs in the files you can use one (or a combination) of the following commands, which you should place at the end of the ``%prep`` section.
+To change the shebangs in the files you can use one (or a combination) of the following commands, which you should place at the end of the ``%prep`` section. They will change the shebangs to point to the Python 3 interpreter stored in the ``${__python3}`` macro.
 
 .. code-block:: console
 
    $ # Change shebang in individual files
-   $ sed -i '1s_^#!/usr/bin/\(python\|env python\)_#!/usr/bin/python3_' path/to/file1 file2 file3 ...
+   $ sed -i '1s_^#!/usr/bin/\(python\|env python\)_#!%{__python3}_' path/to/file1 file2 file3 ...
 
    $ # Change shebang in all relevant files in this directory and all subdirectories
    $ # See `man find` for how the `-exec command ;` syntax works
-   $ find . -type f -exec sed -i '1s_^#!/usr/bin/\(python\|env python\)_#!/usr/bin/python3_' {} \;
+   $ find . -type f -exec sed -i '1s_^#!/usr/bin/\(python\|env python\)_#!%{__python3}_' {} \;
 
    $ # Change shebang in all relevant executable files in this directory and all subdirectories
-   $ find . -type f -executable -exec sed -i '1s_^#!/usr/bin/\(python\|env python\)_#!/usr/bin/python3_' {} \;
+   $ find . -type f -executable -exec sed -i '1s_^#!/usr/bin/\(python\|env python\)_#!%{__python3}_' {} \;
 
 You don't have to worry about accidentally corrupting other files as these scripts will only change a file if the beginning of its first line exactly matches one of the two aforementioned shebangs.
