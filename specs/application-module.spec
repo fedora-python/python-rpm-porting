@@ -48,33 +48,16 @@ A Python tool which provides a convenient example.
 
 
 %install
-# Here we have to think about the order, because the scripts in /usr/bin are
-# overwritten with every setup.py install.
-# If the script in /usr/bin provides the same functionality regardless
-# of the Python version, we only provide Python 3 version and we need to run
-# the py3_install after py2_install.
-
-# If we need to include the executable both for Python 2 and 3--for example
-# because it interacts with code from the user--then the default executable
-# should be the one for Python 2.
-# We are going to assume that case here, because it is a bit more complex.
-
-%py3_install
-
-# Now /usr/bin/sample-exec is Python 3, so we move it away
-mv %{buildroot}%{_bindir}/sample-exec %{buildroot}%{_bindir}/sample-exec-%{python3_version}
-
 %py2_install
 
-# Now /usr/bin/sample-exec is Python 2, and we move it away anyway
-mv %{buildroot}%{_bindir}/sample-exec %{buildroot}%{_bindir}/sample-exec-%{python2_version}
+# The Python 2 installation process will likely try to install its own version
+# of the application. As we only want to package the Python 3 version of the
+# application, we delete the Python 2 executable so that the Python 3 version
+# can take it's place afterwards. In case of multiple executables being
+# installed, remove each and every one.
+rm %{buildroot}%{_bindir}/sample-exec
 
-# The guidelines also specify we must provide symlinks with a '-X' suffix.
-ln -s ./sample-exec-%{python2_version} %{buildroot}%{_bindir}/sample-exec-2
-ln -s ./sample-exec-%{python3_version} %{buildroot}%{_bindir}/sample-exec-3
-
-# Finally, we provide /usr/bin/sample-exec as a link to /usr/bin/sample-exec-2
-ln -s ./sample-exec-2 %{buildroot}%{_bindir}/sample-exec
+%py3_install
 
 
 %check

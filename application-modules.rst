@@ -46,12 +46,20 @@ As we will be including the executable (application) only in the Python 3 subpac
 
 First, in the same manner as in the preceding `%build`_ section, it is advisable to upgrade the current Python 2 install command to use the new ``%py2_install`` macro, however, if that doesn't work for you, you can stick with the current install command, just make sure it's invoked by the ``%{__python2}`` macro.
 
-After that, add the corresponding Python 3 install command, which will be either be the custom command prefixed by ``%{__python3}`` or the new ``%py3_install`` macro.
+After the Python 2 install macro is run, it is likely going to install the Python 2 version of the application. As we want to package only the Python 3 version of the application, we have to remove the Python 2 executable so that the Python 3 version can take its place afterwards.
 
 .. code-block:: spec
 
     %install
     %py2_install
+    rm %{buildroot}%{_bindir}/sample-exec
+
+The ``%{buildroot}`` macro points to where the build root is being assembled, and ``%{_bindir}`` is a handy macro that substitutes to ``/usr/bin/``. If the package installs multiple executables, be sure to remove each and every one of them.
+
+After that, add the corresponding Python 3 install command, which will be either the custom command prefixed by ``%{__python3}`` or the new ``%py3_install`` macro.
+
+.. code-block:: spec
+
     %py3_install
 
 .. include:: /snippets/install_non-python-script.inc
