@@ -52,10 +52,9 @@ A Python tool which provides a convenient example.
 
 # The Python 2 installation process will likely try to install its own version
 # of the application. As we only want to package the Python 3 version of the
-# application, we delete the Python 2 executable so that the Python 3 version
-# can take it's place afterwards. In case of multiple executables being
-# installed, remove each and every one.
-rm %{buildroot}%{_bindir}/sample-exec
+# application, we delete the Python 2 executable(s) so that the Python 3
+# version(s) can take their place afterwards.
+rm %{buildroot}%{_bindir}/*
 
 %py3_install
 
