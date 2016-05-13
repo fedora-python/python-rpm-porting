@@ -54,6 +54,12 @@ After the Python 2 install macro is run, it is likely going to install the Pytho
     %py2_install
     rm %{buildroot}%{_bindir}/*
 
+.. note::
+
+   It is not enough just to run the Python install macros in the right order (first 2 then 3), because the Python installation mechanism (distutils) can sometimes refuse to override files in ``/usr/bin``. Even if it works on your machine™, be aware that this might happen on other build systems like Koji or Copr. The issue is also `very hard to preduce`_. That is why it is highly recommended to delete the executables between installs as shown here.
+
+.. _`very hard to preduce`: https://lists.fedoraproject.org/archives/list/python-devel@lists.fedoraproject.org/thread/P54Z3BZKZOZDWWCZN56CUAGIQPEQCYPP/
+
 After that, add the corresponding Python 3 install command, which will be either the custom command prefixed by ``%{__python3}`` or the new ``%py3_install`` macro.
 
 .. code-block:: spec
