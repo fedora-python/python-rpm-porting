@@ -1,5 +1,5 @@
-Porting tools for programming in Python
-=======================================
+Tools for programming in Python
+===============================
 
 .. include:: snippets/desc_tools.inc
 
