@@ -109,6 +109,9 @@ Accordingly we'll also add a ``%files`` section for the Python 3 subpackage. You
     %{_bindir}/sample-exec-%{python3_version}
 
 
+.. include:: subsections/h3-shebangs.inc
+
+
 .. include:: subsections/h2-ported-specfile.inc
 
 
