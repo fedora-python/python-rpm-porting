@@ -42,13 +42,13 @@ To change the shebangs in the files you can use one (or a combination) of the fo
 .. code-block:: console
 
    $ # Change shebang in individual files
-   $ sed -i '1s_^#!/usr/bin/\(python\|env python\)_#!%{__python3}_' path/to/file1 file2 file3 ...
+   $ sed -i '1s=^#!/usr/bin/\(python\|env python\)=#!%{__python3}=' path/to/file1 file2 file3 ...
 
    $ # Change shebang in all relevant files in this directory and all subdirectories
-   $ # See `man find` for how the `-exec command ;` syntax works
-   $ find . -type f -exec sed -i '1s_^#!/usr/bin/\(python\|env python\)_#!%{__python3}_' {} \;
+   $ # See `man find` for how the `-exec command {} +` syntax works
+   $ find -type f -exec sed -i '1s=^#!/usr/bin/\(python\|env python\)=#!%{__python3}=' {} +
 
    $ # Change shebang in all relevant executable files in this directory and all subdirectories
-   $ find . -type f -executable -exec sed -i '1s_^#!/usr/bin/\(python\|env python\)_#!%{__python3}_' {} \;
+   $ find -type f -executable -exec sed -i '1s=^#!/usr/bin/\(python\|env python\)=#!%{__python3}=' {} +
 
 You don't have to worry about accidentally corrupting other files as these scripts will only change a file if the beginning of its first line exactly matches one of the two aforementioned shebangs.

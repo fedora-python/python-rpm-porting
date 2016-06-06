@@ -12,7 +12,7 @@
 Welcome to the Python RPM Porting Guide
 =======================================
 
-This document aims to guide you through the process of porting your Python 2 Fedora package to Python 3.
+This document aims to guide you through the process of porting your Python 2 RPM package to Python 3.
 
 .. note::
     If you struggle with the porting of your package and would like help or more information, please contact us at the `python-devel mailing list`_ (also accessible through a `web interface`_) and we will try to help you and/or improve the guide accordingly.
