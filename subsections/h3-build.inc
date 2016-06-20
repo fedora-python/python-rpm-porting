@@ -3,7 +3,7 @@
 
 Currently your package is building the software for Python 2, what we need to do is also add building for Python 3. While we're modifying the spec file, however, it's a good idea to also update it to new standards—in this case a new macro.
 
-In the ideal case, you'll find the build done with either the ``%py2_build`` macro or its older version ``%py_build``, which you then should exchange for the former. In either case, you can just add the macro ``%py3_build`` afterwards, and this part is done.
+In the ideal case, you'll find the build done with either the ``%py2_build`` macro or its older version ``%py_build``, which you then should exchange for the former. In either case, you can just add the macro ``%py3_build`` afterwards, and this part is done. Note that to use these macros, you need to have ``python2-devel`` and/or ``python3-devel`` listed among ``BuildRequires``, but most Python packages already do.
 
 .. code-block:: spec
 
