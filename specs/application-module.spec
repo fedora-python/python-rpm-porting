@@ -8,7 +8,7 @@ Summary:        %{sum}
 
 License:        MIT
 URL:            http://pypi.python.org/pypi/%{srcname}
-Source0:        http://pypi.python.org/packages/source/e/%{srcname}/%{srcname}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/e/%{srcname}/%{srcname}-%{version}.tar.gz
 
 BuildArch:      noarch
 BuildRequires:  python2-devel
