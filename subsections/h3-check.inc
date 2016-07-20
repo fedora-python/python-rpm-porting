@@ -11,7 +11,7 @@ Unlike in previous sections, there's no special macro for the ``%check`` section
 
 Chances are that you will encounter a custom Python command that runs the tests, such as ``nosetests`` or ``py.test``. In that case find out what is the name of the executable for Python 3 and run it after the Python 2 command.
 
-If the command for Python 2 can be invoked explicitly for Python 2, e.g. as ``py.test-2`` instead of just ``py.test``, use it.
+If the command for Python 2 can be invoked explicitly for Python 2, e.g. as ``py.test-2`` instead of just ``py.test``, use it. Note that to use py.test commands, you need to have ``python2-pytest`` and/or ``python3-pytest`` listed among BuildRequires.
 
 .. code-block:: spec
 
