@@ -1,10 +1,9 @@
 %global srcname example
-%global sum An example Python module
 
 Name:           python-%{srcname}
 Version:        1.2.3
 Release:        2%{?dist}
-Summary:        %{sum}
+Summary:        An example Python module
 
 License:        MIT
 URL:            http://pypi.python.org/pypi/%{srcname}
@@ -19,7 +18,7 @@ A Python module which provides a convenient example.
 
 
 %package -n python2-%{srcname}
-Summary:        %{sum}
+Summary:        %{summary}
 Requires:       python-some-module
 Requires:       python2-other-module
 %{?python_provide:%python_provide python2-%{srcname}}
@@ -29,7 +28,7 @@ A Python module which provides a convenient example.
 
 
 %package -n python3-%{srcname}
-Summary:        %{sum}
+Summary:        %{summary}
 Requires:       python3-some-module
 Requires:       python3-other-module
 %{?python_provide:%python_provide python3-%{srcname}}

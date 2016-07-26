@@ -6,14 +6,13 @@ Each subpackage you create will need to have its own name, summary and descripti
 .. code-block:: spec
 
     %global srcname example
-    %global sum An example Python tool
 
 Now we can use these to create the subpackages. The following should be placed beneath the ``%description`` section of the base package:
 
 .. code-block:: spec
 
     %package -n python2-%{srcname}
-    Summary:  %{sum}
+    Summary:  %{summary}
     Requires: python-some-module
     Requires: python2-other-module
     %{?python_provide:%python_provide python2-%{srcname}}
@@ -23,7 +22,7 @@ Now we can use these to create the subpackages. The following should be placed b
 
 
     %package -n python3-%{srcname}
-    Summary:  %{sum}
+    Summary:  %{summary}
     Requires: python3-some-module
     Requires: python3-other-module
     %{?python_provide:%python_provide python3-%{srcname}}
@@ -31,7 +30,7 @@ Now we can use these to create the subpackages. The following should be placed b
     %description -n python3-%{srcname}
     A Python tool which provides a convenient example.
 
-First, using the ``%package`` macro you start defining a new *subpackage*, specifying its full name as ``python2-%{srcname}``, which in this case will become ``python2-example``. Next we provide the summary through the macro we defined earlier.
+First, using the ``%package`` macro you start defining a new *subpackage*, specifying its full name as ``python2-%{srcname}``, which in this case will become ``python2-example``. Next we provide the summary which we defined earlier.
 
 .. _requires_subsection:
 
