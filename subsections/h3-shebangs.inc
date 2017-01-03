@@ -42,7 +42,7 @@ To change the shebangs in the files you can use one (or a combination) of the fo
 .. code-block:: console
 
    $ # Change shebang in individual files
-   $ sed -i '1s=^#!/usr/bin/\(python\|env python\)[23]\?=#!%{__python3}=' path/to/file1 file2 file3 ...
+   $ sed -i '1s=^#!/usr/bin/\(python\|env python\)[0-9.]*=#!%{__python3}=' path/to/file1 file2 file3 ...
 
    $ # Change shebang in all relevant files in this directory and all subdirectories
    $ # See `man find` for how the `-exec command {} +` syntax works
