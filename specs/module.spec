@@ -19,7 +19,7 @@ A Python module which provides a convenient example.
 
 %package -n python2-%{srcname}
 Summary:        %{summary}
-Requires:       python-some-module
+Requires:       python2-some-module
 Requires:       python2-other-module
 %{?python_provide:%python_provide python2-%{srcname}}
 
