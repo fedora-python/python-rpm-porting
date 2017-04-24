@@ -6,6 +6,7 @@
    modules
    application-modules
    tools
+   naming-scheme
 
 
 =======================================
@@ -84,3 +85,10 @@ If your package is being imported by third-party projects, but does not have any
 .. include:: snippets/desc_tools.inc
 
 *See:* :doc:`tools`
+
+Make sure to follow the new naming scheme
+-----------------------------------------
+
+.. include:: snippets/naming_scheme.inc
+
+*See:* :doc:`naming-scheme`
