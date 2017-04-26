@@ -86,8 +86,8 @@ If your package is being imported by third-party projects, but does not have any
 
 *See:* :doc:`tools`
 
-Make sure to follow the new naming scheme
------------------------------------------
+Are you following the new Python package naming scheme?
+-------------------------------------------------------
 
 .. include:: snippets/naming_scheme.inc
 

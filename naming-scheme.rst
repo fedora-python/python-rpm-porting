@@ -1,5 +1,5 @@
-Following the new naming scheme
-===============================
+New Python package naming scheme
+================================
 
 .. include:: snippets/naming_scheme.inc
 
@@ -16,7 +16,7 @@ Using the outdated naming scheme in your subpackage names or run-time/build-time
 What needs to be changed?
 -------------------------
 
-Check the names of binary packages you are building from your SRPM, and if you use one of the following naming schemes, you'll find instructions on how to fix it in the `section below <required_changes_>`_.
+Check the names of binary RPM packages you are building from your SRPM, and if you use one of the following naming schemes, you'll find instructions on how to fix it in the `section below <required_changes_>`_.
 
 Common naming scheme violations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
