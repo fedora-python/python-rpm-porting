@@ -4,19 +4,19 @@ Following the new naming scheme
 .. include:: snippets/naming_scheme.inc
 
 .. note::
-	This is mostly related to renaming Python **binary** packages to avoid using ``python-`` prefix without a version and does not require changing the SRPM name.
+	This section is related to the renaming of Python **binary RPM** packages to avoid using the ``python-`` prefix without a version. Changing the package/SRPM name is not required.
 
-Why is this so important?
--------------------------
+Why is this important?
+----------------------
 
-When the time comes and ``python`` means Python 3 in Fedora, installing a ``python-<srcname>`` package will imply a Python 3 version of this package. This is planned for 2020, when upstream support for Python 2 ends. To achieve this all Python binary packages have to follow the new naming scheme and use ``%python_provide`` macro, devised to make the switch easier. However, currently we are far away from achieving this goal.
+When the time comes and ``python`` means Python 3 in Fedora, installing a ``python-<srcname>`` package will imply a Python 3 version of this package. This is planned for 2020, when upstream support for Python 2 ends. To achieve this, all Python binary RPM packages have to follow the new naming scheme and use the ``%python_provide`` macro, devised to make the switch easier. However, we are still far away from achieving this goal.
 
-Using outdated naming scheme in your subpackage names or runtime/builtime requirements might cause a range of issues when the switch happens.
+Using the outdated naming scheme in your subpackage names or run-time/build-time requirements might cause a range of issues when the switch happens.
 
 What needs to be changed?
 -------------------------
 
-Check the names of binary packages you are building from your SRPM, and if you use one of the following naming schemes, fix it with the instructions provided in `Required changes`_.
+Check the names of binary packages you are building from your SRPM, and if you use one of the following naming schemes, you'll find instructions on how to fix it in the `section below <required_changes_>`_.
 
 Common naming scheme violations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -28,7 +28,7 @@ See the following naming schemes which violate the current naming guidelines:
    :stub-columns: 1
 
    *  -  SRPM
-      -  RPMs built
+      -  Binary RPMs built
       -  Violaion
    *  -  python-<srcname>
       -  | python-<srcname>
@@ -42,24 +42,26 @@ See the following naming schemes which violate the current naming guidelines:
          | python3-<srcname>
       -  missing `python2-` prefix in the binary package
 
+.. _required_changes:
+
 Required changes
 ^^^^^^^^^^^^^^^^
 
-Add ``%package`` section for the Python 2 subpackage
-""""""""""""""""""""""""""""""""""""""""""""""""""""
+Add a ``%package`` section for the Python 2 subpackage
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-To rename the binary package to ``python2-<srcname>``, you should build it as a subpackage with an appropriate name. Make sure to move all related runtime requirements and use `%python_provide`_ macro, which will provide both ``python-<srcname>`` and ``python2-<srcname>`` until the switch to Python 3 happens.
+To rename the binary RPM package to ``python2-<srcname>``, you should build it as a subpackage with an appropriate name. Make sure to move all related runtime requirements from the main package to the new subpackage and use the `%python_provide`_ macro, which will provide both ``python-<srcname>`` and ``python2-<srcname>`` until the switch to Python 3 happens.
 
-The change you are about to do should look like this:
+The change should look like this:
 
 .. literalinclude:: specs/module.spec
 	:diff: specs/module.spec.orig
-	:lines: 15-19,21-34
+	:lines: 15-19,21-33
 
 .. _%python_provide: modules.html#python-provide
-	
-Use ``%python_provide`` macro in the Python 3 subpackage
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Use the ``%python_provide`` macro in the Python 3 subpackage
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Check your Python 3 subpackage (if you build any), and make sure you are using the `%python_provide`_ macro to handle provides:
 
@@ -68,13 +70,13 @@ Check your Python 3 subpackage (if you build any), and make sure you are using t
 	:emphasize-lines: 5
 	:lines: 30-37
 
-Rename ``%files`` section
-"""""""""""""""""""""""""
+Rename the ``%files`` section
+"""""""""""""""""""""""""""""
 
-Give a name with a versioned prefix to the current ``%files`` section, and make sure to use new versioned macros ``%{python2_sitelib}``, ``%{python2_sitearch}``, ``%{python2_version}``:
+To assign the ``%files`` section to the Python 2 subpackage, add the subpackage name with the versioned prefix after the ``%files`` macro. Make sure to use the new versioned macros ``%{python2_sitelib}``, ``%{python2_sitearch}``, and ``%{python2_version}`` as well:
 
 .. literalinclude:: specs/module.spec
 	:diff: specs/module.spec.orig
 	:lines: 67-68,70-74
 
-At this point you should be done. Just bump the release tag and add a changelog that you've updated the package to use the new naming scheme.
+At this point you should be done. Don't forget to bump the release tag and add a changelog entry indicating you've updated the package to use the new naming scheme.
