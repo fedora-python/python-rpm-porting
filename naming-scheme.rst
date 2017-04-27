@@ -4,7 +4,7 @@ New Python package naming scheme
 .. include:: snippets/naming_scheme.inc
 
 .. note::
-	This section is related to the renaming of Python **binary RPM** packages to avoid using the ``python-`` prefix without a version. Changing the main package/SRPM name is not required.
+   This section is related to the renaming of Python **binary RPM** packages to avoid using the ``python-`` prefix without a version. Changing the main package/SRPM name is not required.
 
 Why is this important?
 ----------------------
@@ -17,6 +17,8 @@ What needs to be changed?
 -------------------------
 
 Check the names of binary RPM packages you are building from your SRPM, and if you use one of the following naming schemes, you'll find instructions on how to fix it in the `section below <required_changes_>`_.
+
+.. _common_naming_scheme_violations:
 
 Common naming scheme violations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -55,8 +57,18 @@ To rename the binary RPM package to ``python2-<srcname>``, you should build it a
 The change should look like this:
 
 .. literalinclude:: specs/module.spec
-	:diff: specs/module.spec.orig
-	:lines: 15-19,21-32,43
+   :diff: specs/module.spec.orig
+   :lines: 15-19,21-32,43
+
+Note, that in case of the last naming scheme example in the `table above <common_naming_scheme_violations_>`_, when you rename the binary RPM from ``<srcname>`` to ``python2-<srcname>``, the `%python_provide`_ macro will not provide the old name ``<srcname>``. To keep the upgrade path clean you will have to provide it and obsolete the old verision manually. You may place the tags right after the `%python_provide`_ macro:
+
+.. code-block:: spec
+   :emphasize-lines: 2,3
+
+   %{?python_provide:%python_provide python2-%{srcname}}
+   Provides:   <srcname> = %{version}-%{release}
+   Obsoletes:  <srcname> <= %{version}-%{release}
+
 
 .. _%python_provide: modules.html#python-provide
 
@@ -66,9 +78,9 @@ Use the ``%python_provide`` macro in the Python 3 subpackage
 Check your Python 3 subpackage (if you build any), and make sure you are using the `%python_provide`_ macro to handle provides:
 
 .. literalinclude:: specs/module.spec
-	:language: spec
-	:emphasize-lines: 5
-	:lines: 30-37
+   :language: spec
+   :emphasize-lines: 5
+   :lines: 30-37
 
 Rename the ``%files`` section
 """""""""""""""""""""""""""""
@@ -76,7 +88,7 @@ Rename the ``%files`` section
 To assign the ``%files`` section to the Python 2 subpackage, add the subpackage name with the versioned prefix after the ``%files`` macro. Make sure to use the new versioned macros ``%{python2_sitelib}``, ``%{python2_sitearch}``, and ``%{python2_version}`` as well:
 
 .. literalinclude:: specs/module.spec
-	:diff: specs/module.spec.orig
-	:lines: 67-68,70-74
+   :diff: specs/module.spec.orig
+   :lines: 67-68,70-74
 
 At this point you should be done. Don't forget to bump the release tag and add a changelog entry indicating you've updated the package to use the new naming scheme.
