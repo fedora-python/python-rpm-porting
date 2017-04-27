@@ -69,7 +69,7 @@ Note, that in case of the last naming scheme example in the `table above <common
    Provides:   %{srcname} = %{version}-%{release}
    Obsoletes:  %{srcname} < current_version-current_release
 
-In the Obsoletes tag, ``current_version`` and ``current_release`` are the hardcoded version and release that were current when you did the change.
+In the Obsoletes tag, ``current_version`` and ``current_release`` are the first version and release when the new naming scheme was used.
 
 .. _%python_provide: modules.html#python-provide
 
