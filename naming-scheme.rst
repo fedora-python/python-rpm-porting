@@ -4,7 +4,7 @@ New Python package naming scheme
 .. include:: snippets/naming_scheme.inc
 
 .. note::
-	This section is related to the renaming of Python **binary RPM** packages to avoid using the ``python-`` prefix without a version. Changing the package/SRPM name is not required.
+	This section is related to the renaming of Python **binary RPM** packages to avoid using the ``python-`` prefix without a version. Changing the main package/SRPM name is not required.
 
 Why is this important?
 ----------------------
@@ -29,7 +29,7 @@ See the following naming schemes which violate the current naming guidelines:
 
    *  -  SRPM
       -  Binary RPMs built
-      -  Violaion
+      -  Violation
    *  -  python-<srcname>
       -  | python-<srcname>
       -  unversioned `python-` prefix in the binary package
@@ -56,7 +56,7 @@ The change should look like this:
 
 .. literalinclude:: specs/module.spec
 	:diff: specs/module.spec.orig
-	:lines: 15-19,21-33
+	:lines: 15-19,21-32,43
 
 .. _%python_provide: modules.html#python-provide
 
