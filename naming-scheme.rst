@@ -66,9 +66,10 @@ Note, that in case of the last naming scheme example in the `table above <common
    :emphasize-lines: 2,3
 
    %{?python_provide:%python_provide python2-%{srcname}}
-   Provides:   <srcname> = %{version}-%{release}
-   Obsoletes:  <srcname> <= %{version}-%{release}
+   Provides:   %{srcname} = %{version}-%{release}
+   Obsoletes:  %{srcname} < current_version-current_release
 
+In the Obsoletes tag, ``current_version`` and ``current_release`` are the hardcoded version and release that were current when you did the change.
 
 .. _%python_provide: modules.html#python-provide
 
