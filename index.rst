@@ -37,7 +37,7 @@ Does upstream support Python 3?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Look  upstream and try to find out if the software is released with Python 3 support. First look at the front page of the project, Python compatibility is oftentimes listed there. There is also a good chance the project will have this information listed on `PyPI`_. If not, look at release notes or the changelog history. You can also look at issues and pull requests.
 
-.. _PyPI: https://pypi.python.org/pypi
+.. _PyPI: https://pypi.org/
 
 However, the important thing to note is that the Python 3 support needs to be *released*, not just committed in the version control system (git, mercurial,...).
 
