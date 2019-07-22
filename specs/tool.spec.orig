@@ -6,7 +6,7 @@ Release:        1%{?dist}
 Summary:        An example Python tool
 
 License:        MIT
-URL:            http://pypi.python.org/pypi/%{srcname}
+URL:            https://pypi.org/project/%{srcname}
 Source0:        https://files.pythonhosted.org/packages/source/e/%{srcname}/%{srcname}-%{version}.tar.gz
 
 BuildArch:      noarch
